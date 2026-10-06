@@ -5,14 +5,14 @@
   "src": "osm"
  },
  "4 Pass. de Abbesses Paris, Île-de-France": {
-  "lat": 48.6443057,
-  "lon": 2.7537863,
-  "src": "osm"
+  "lat": 48.8846,
+  "lon": 2.3383,
+  "src": "claude"
  },
  "4 passages des abesses, Paris": {
-  "lat": 48.8588897,
-  "lon": 2.320041,
-  "src": "osm"
+  "lat": 48.8846,
+  "lon": 2.3383,
+  "src": "claude"
  },
  "9 rue du mont dore, Paris": {
   "lat": 48.883225,
@@ -29,21 +29,105 @@
   "lon": 5.1135708,
   "src": "osm"
  },
- "Budapest": {
-  "lat": 47.481849,
-  "lon": 19.1449053,
-  "src": "osm"
+ "Bakov nad Jizerou, Bohême (auj. Tchéquie)": {
+  "lat": 50.4823,
+  "lon": 14.9415,
+  "src": "claude"
  },
- "Budapest IX, paroisse catholique de Ferencváros": null,
+ "Bicske, Fejér, Hongrie": {
+  "lat": 47.4907,
+  "lon": 18.6366,
+  "src": "claude"
+ },
+ "Borosjenő, Arad, Hongrie (auj. Ineu, Roumanie ?)": {
+  "lat": 46.4317,
+  "lon": 21.8364,
+  "src": "claude"
+ },
+ "Budapest": {
+  "lat": 47.4979,
+  "lon": 19.0402,
+  "src": "claude"
+ },
+ "Budapest III, Laktanya utca 11": {
+  "lat": 47.541,
+  "lon": 19.043,
+  "src": "claude"
+ },
+ "Budapest IV, Régiposta utca 7-9": {
+  "lat": 47.562,
+  "lon": 19.087,
+  "src": "claude"
+ },
+ "Budapest IX": {
+  "lat": 47.478,
+  "lon": 19.079,
+  "src": "claude"
+ },
+ "Budapest IX (Ferencváros)": {
+  "lat": 47.478,
+  "lon": 19.079,
+  "src": "claude"
+ },
+ "Budapest IX, paroisse catholique de Ferencváros": {
+  "lat": 47.484,
+  "lon": 19.07,
+  "src": "claude"
+ },
  "Budapest IX, Üllői út": {
   "lat": 47.4735435,
   "lon": 19.1043676,
   "src": "osm"
  },
+ "Budapest VI, István út 41": {
+  "lat": 47.506,
+  "lon": 19.079,
+  "src": "claude"
+ },
+ "Budapest VI, Lehel utca 14": {
+  "lat": 47.523,
+  "lon": 19.064,
+  "src": "claude"
+ },
+ "Budapest VI, paroisse de Terézváros": {
+  "lat": 47.504,
+  "lon": 19.061,
+  "src": "claude"
+ },
+ "Budapest VII": {
+  "lat": 47.5,
+  "lon": 19.072,
+  "src": "claude"
+ },
+ "Budapest VII (Erzsébetváros)": {
+  "lat": 47.5,
+  "lon": 19.072,
+  "src": "claude"
+ },
+ "Budapest VII, Nefelejcs utca 17": {
+  "lat": 47.506,
+  "lon": 19.083,
+  "src": "claude"
+ },
+ "Budapest VII, paroisse d'Erzsébetváros": {
+  "lat": 47.505,
+  "lon": 19.076,
+  "src": "claude"
+ },
  "Budapest VIII, Lujza utca 14": {
   "lat": 47.4918101,
   "lon": 19.0856488,
   "src": "osm"
+ },
+ "Budapest VIII, paroisse catholique de Józsefváros": {
+  "lat": 47.489,
+  "lon": 19.072,
+  "src": "claude"
+ },
+ "Budapest, István út 30/c": {
+  "lat": 47.5062,
+  "lon": 19.0785,
+  "src": "claude"
  },
  "Budapest, Magyarország": {
   "lat": 47.4978789,
@@ -51,9 +135,9 @@
   "src": "osm"
  },
  "Budapest, Pest-Pilis-Solt-Kiskun, Hungary": {
-  "lat": 47.481849,
-  "lon": 19.1449053,
-  "src": "osm"
+  "lat": 47.4979,
+  "lon": 19.0402,
+  "src": "claude"
  },
  "Budapest, Pest-Pilis-Solt-Kiskun, Magyarország": {
   "lat": 47.4978789,
@@ -74,6 +158,11 @@
   "lat": 44.2397,
   "lon": 0.8614,
   "src": "insee"
+ },
+ "Erzsébetfalva (auj. Budapest XX, Pesterzsébet), Török Flóris utca 30": {
+  "lat": 47.436,
+  "lon": 19.105,
+  "src": "claude"
  },
  "Fargues-Saint-Hilaire, 33165, Gironde, Aquitaine, France": {
   "lat": 44.8202,
@@ -100,6 +189,16 @@
   "lon": 1.913,
   "src": "insee"
  },
+ "Kolozsvár (Cluj), Hongrie (auj. Roumanie)": {
+  "lat": 46.7712,
+  "lon": 23.6236,
+  "src": "claude"
+ },
+ "Kolozsvár / Cluj, Roumanie (probable)": {
+  "lat": 46.7712,
+  "lon": 23.6236,
+  "src": "claude"
+ },
  "La Ferté-sur-Chiers, 08168, Ardennes, Champagne-Ardenne, France": {
   "lat": 49.5733,
   "lon": 5.233,
@@ -119,6 +218,11 @@
   "lat": 43.9886187,
   "lon": 0.2492762,
   "src": "osm"
+ },
+ "Lavagna / Sestri Levante, Genova, Liguria, Italie": {
+  "lat": 44.29,
+  "lon": 9.37,
+  "src": "claude"
  },
  "Linden, , , New Jersey, Etats-Unis d'Amérique": {
   "lat": 40.6220478,
@@ -140,10 +244,20 @@
   "lon": -1.0556758,
   "src": "osm"
  },
+ "Malá Bělá, Bakov nad Jizerou, Bohême (auj. Tchéquie)": {
+  "lat": 50.498,
+  "lon": 14.934,
+  "src": "claude"
+ },
  "Mauriac, 15120, Cantal, Auvergne, France": {
   "lat": 45.2209,
   "lon": 2.3209,
   "src": "insee"
+ },
+ "Menyháza, Arad, Hongrie (auj. Moneasa, Roumanie)": {
+  "lat": 46.437,
+  "lon": 22.285,
+  "src": "claude"
  },
  "Meymac, 19136, Corrèze, Limousin, France": {
   "lat": 45.5527,
@@ -159,6 +273,16 @@
   "lat": 45.4641943,
   "lon": 9.1896346,
   "src": "osm"
+ },
+ "Milano, Lombardia, Italie": {
+  "lat": 45.4642,
+  "lon": 9.19,
+  "src": "claude"
+ },
+ "Milano, Viale Piave 42, Lombardia, Italie": {
+  "lat": 45.472,
+  "lon": 9.206,
+  "src": "claude"
  },
  "Miramont-de-Comminges, 31344, Haute-Garonne, Midi-Pyrénées, France": {
   "lat": 43.0886,
@@ -200,40 +324,50 @@
   "lon": 0.347,
   "src": "insee"
  },
+ "Paris 15e": {
+  "lat": 48.8421,
+  "lon": 2.2999,
+  "src": "claude"
+ },
+ "Paris 17e, 9 rue du Mont-Dore": {
+  "lat": 48.8845,
+  "lon": 2.3205,
+  "src": "claude"
+ },
  "Paris 3eme": {
   "lat": 48.8638732,
   "lon": 2.3617859,
   "src": "osm"
  },
  "Paris, 75010, Paris, Ile-de-France, France": {
-  "lat": 48.8588897,
-  "lon": 2.320041,
-  "src": "osm"
+  "lat": 48.876,
+  "lon": 2.359,
+  "src": "claude"
  },
  "Paris, 75012, Paris, Ile-de-France, France": {
-  "lat": 48.8588897,
-  "lon": 2.320041,
-  "src": "osm"
+  "lat": 48.84,
+  "lon": 2.388,
+  "src": "claude"
  },
  "Paris, 75015, Paris, Ile-de-France, France": {
-  "lat": 48.8588897,
-  "lon": 2.320041,
-  "src": "osm"
+  "lat": 48.8421,
+  "lon": 2.2999,
+  "src": "claude"
  },
  "Paris, 75018, Paris, Ile-de-France, France": {
-  "lat": 48.8588897,
-  "lon": 2.320041,
-  "src": "osm"
+  "lat": 48.8925,
+  "lon": 2.3444,
+  "src": "claude"
  },
  "Paris, 75019, Paris, Ile-de-France, France": {
-  "lat": 48.8588897,
-  "lon": 2.320041,
-  "src": "osm"
+  "lat": 48.8871,
+  "lon": 2.3848,
+  "src": "claude"
  },
  "Paris, 75020, Paris, Ile-de-France, France": {
-  "lat": 48.8588897,
-  "lon": 2.320041,
-  "src": "osm"
+  "lat": 48.8638,
+  "lon": 2.3985,
+  "src": "claude"
  },
  "Paris, 75056, Paris, Ile-de-France, France": {
   "lat": 48.8589,
@@ -245,10 +379,40 @@
   "lon": 0.7949,
   "src": "insee"
  },
+ "Pola, Istrie": {
+  "lat": 44.8666,
+  "lon": 13.8496,
+  "src": "claude"
+ },
+ "Pola, Istrie (auj. Pula, Croatie)": {
+  "lat": 44.8666,
+  "lon": 13.8496,
+  "src": "claude"
+ },
+ "Rečkov, Malá Bělá, Bohême (auj. Tchéquie)": {
+  "lat": 50.497,
+  "lon": 14.907,
+  "src": "claude"
+ },
  "Rue paul lafarge, Saint-Denis, 93066, Seine-Saint-Denis, Ile-de-France, France": {
   "lat": 48.9383732,
   "lon": 2.3627508,
   "src": "osm"
+ },
+ "Rákoscsaba, Bártfa utca 79": {
+  "lat": 47.484,
+  "lon": 19.275,
+  "src": "claude"
+ },
+ "Rákoscsaba, Újtelep, Bártfai utca 59 (auj. Budapest XVII)": {
+  "lat": 47.482,
+  "lon": 19.27,
+  "src": "claude"
+ },
+ "Rákoskeresztúr (auj. Budapest XVII), Pest, Hongrie": {
+  "lat": 47.487,
+  "lon": 19.238,
+  "src": "claude"
  },
  "Saint-Denis, 93066, Seine-Saint-Denis, Ile-de-France, France": {
   "lat": 48.9378,
@@ -270,10 +434,20 @@
   "lon": 0.7749,
   "src": "insee"
  },
+ "Sestri Levante, Genova, Liguria, Italie (?)": {
+  "lat": 44.2716,
+  "lon": 9.396,
+  "src": "claude"
+ },
  "Setif, 19001, , Sétif, Algérie": {
   "lat": 36.1893494,
   "lon": 5.4046876,
   "src": "osm"
+ },
+ "Starý Plzenec, Bohême": {
+  "lat": 49.697,
+  "lon": 13.474,
+  "src": "claude"
  },
  "Strasbourg, 67482, Bas-Rhin, Alsace, France": {
   "lat": 48.5691,
@@ -285,10 +459,25 @@
   "lon": -0.5918,
   "src": "insee"
  },
+ "Temesvár (auj. Timișoara, Roumanie)": {
+  "lat": 45.7489,
+  "lon": 21.2087,
+  "src": "claude"
+ },
  "Terjat, 03280, Allier, Auvergne, France": {
   "lat": 46.2152,
   "lon": 2.6191,
   "src": "insee"
+ },
+ "Thammühl (Staré Splavy), paroisse de Doksy, Bohême (auj. Tchéquie)": {
+  "lat": 50.6,
+  "lon": 14.638,
+  "src": "claude"
+ },
+ "Thammühl n° 4 (auj. Staré Splavy, Doksy), Bohême (auj. Tchéquie)": {
+  "lat": 50.6,
+  "lon": 14.638,
+  "src": "claude"
  },
  "Toulouse, 31555, Haute-Garonne, Midi-Pyrénées, France": {
   "lat": 43.6007,
@@ -301,9 +490,14 @@
   "src": "insee"
  },
  "Trieszt, Autriche": {
-  "lat": 47.59397,
-  "lon": 14.12456,
-  "src": "osm"
+  "lat": 45.6495,
+  "lon": 13.7768,
+  "src": "claude"
+ },
+ "Tuhaň, district de Dubá (Česká Lípa), Bohême (auj. Tchéquie)": {
+  "lat": 50.518,
+  "lon": 14.504,
+  "src": "claude"
  },
  "Valennes, 72366, Sarthe, Pays de la Loire, France": {
   "lat": 48.0036,
@@ -329,5 +523,15 @@
   "lat": 49.3010673,
   "lon": -1.0542946,
   "src": "osm"
+ },
+ "Vál, Fejér, Hongrie": {
+  "lat": 47.364,
+  "lon": 18.678,
+  "src": "claude"
+ },
+ "Šťáhlavy, district de Plzeň, Bohême (auj. Tchéquie)": {
+  "lat": 49.676,
+  "lon": 13.505,
+  "src": "claude"
  }
 }
