@@ -15,6 +15,7 @@
     const route = path.slice(i + 5);
     const method = ((init && init.method) || "GET").toUpperCase();
     if (route === "data") return realFetch("data.json", { cache: "no-cache" });
+    if (route === "translations") return realFetch("traductions.json", { cache: "no-cache" });
     if (route === "ping") return json({ version: "en-ligne" });
     if (route === "bye") return json({});
     if (route === "places") {

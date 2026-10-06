@@ -18,13 +18,13 @@ const MAP = {
 };
 
 const EV_GROUP = { BIRT: "birth", BAPM: "birth", CHR: "birth", DEAT: "death", BURI: "death", CREM: "death", MARR: "marr" };
-const GROUP_LABEL = { birth: "Naissances", marr: "Mariages", death: "Décès", other: "Autres (résidence…)" };
+const GROUP_LABEL = { birth: t("gBirth"), marr: t("gMarr"), death: t("gDeath"), other: t("gOther") };
 const ERAS = [
-  { max: 1800, label: "avant 1800", color: "#a78bfa" },
+  { max: 1800, label: t("before1800"), color: "#a78bfa" },
   { max: 1850, label: "1800 – 1849", color: "#60a5fa" },
   { max: 1900, label: "1850 – 1899", color: "#22d3ee" },
   { max: 1950, label: "1900 – 1949", color: "#34d399" },
-  { max: 99999, label: "depuis 1950", color: "#fbbf24" },
+  { max: 99999, label: t("since1950"), color: "#fbbf24" },
 ];
 const NO_DATE = "#94a3b8";
 const eraColor = (y) => (y ? ERAS.find((e) => y < e.max).color : NO_DATE);
@@ -168,7 +168,7 @@ async function geocodeMissing() {
   }
   await flush();
   MAP.geocoding = false;
-  if (offline >= 3) toast("Impossible de joindre le service de cartographie (connexion internet ?).", true);
+  if (offline >= 3) toast(t("geoFail"), true);
   renderControls();
 }
 
@@ -199,7 +199,7 @@ function ensureMap() {
     MAP.placing = null;
     $("map").classList.remove("placing");
     await savePlace(place, { lat: +e.latlng.lat.toFixed(5), lon: +e.latlng.lng.toFixed(5), manual: true });
-    toast(`« ${shortPlace(place)} » placé`);
+    toast(t("placed", shortPlace(place)));
     drawMap(false);
   });
   // liens dans les bulles
@@ -214,7 +214,7 @@ function ensureMap() {
 function startPlacing(place) {
   MAP.placing = place;
   $("map").classList.add("placing");
-  toast(`Clique sur la carte à l'endroit de « ${shortPlace(place)} » (Échap pour annuler)`);
+  toast(t("clickToPlace", shortPlace(place)));
 }
 
 function drawMap(fit) {
@@ -252,7 +252,7 @@ function drawMap(fit) {
         L.polyline([[a.lat, a.lon], [b.lat, b.lon]], {
           color: P(par).sex === "F" ? "#f28db4" : "#6fa8ff",
           weight: hot ? 2.8 : 1.6, opacity: hot ? 0.95 : focus ? 0.22 : 0.55, dashArray: hot ? null : "4 5",
-        }).bindTooltip(`${esc(fullName(P(par)))}${relationLabel(root, par) ? ` <span class="tt-rel">(${esc(relationLabel(root, par))})</span>` : ""}, né${P(par).sex === "F" ? "e" : ""} à ${esc(shortPlace(pb))}<br>→ ${P(par).sex === "F" ? "mère" : "père"} de ${esc(fullName(P(id)))}${id !== root && relationLabel(root, id) ? ` <span class="tt-rel">(${esc(relationLabel(root, id))})</span>` : ""}, né${P(id).sex === "F" ? "e" : ""} à ${esc(shortPlace(cb))}`, { sticky: true })
+        }).bindTooltip(`${esc(fullName(P(par)))}${relationLabel(root, par) ? ` <span class="tt-rel">(${esc(relationLabel(root, par))})</span>` : ""}, ${esc(t("bornIn", P(par).sex === "F", shortPlace(pb)))}<br>→ ${esc(t("parentOf", P(par).sex === "F", fullName(P(id))))}${id !== root && relationLabel(root, id) ? ` <span class="tt-rel">(${esc(relationLabel(root, id))})</span>` : ""}, ${esc(t("bornIn", P(id).sex === "F", shortPlace(cb)))}`, { sticky: true })
           .addTo(MAP.lines);
       }
     }
@@ -269,12 +269,12 @@ function drawMap(fit) {
     const rows = evs.map((e) => `<li class="${e.pids.includes(root) ? "mp-me" : ""}"><span class="mp-tag">${esc(EVENT_LABELS[e.tag] || e.tag)}</span>
         <span class="mp-year">${esc(gedDateToFr(e.date) || "")}</span>
         ${e.pids.map((pid) => {
-          const rel = pid === root ? (P(pid).sex === "F" ? "elle-même" : "lui-même") : relationLabel(root, pid);
+          const rel = pid === root ? t("self", P(pid).sex === "F") : relationLabel(root, pid);
           return `<a href="#" data-pid="${esc(pid)}">${esc(fullName(P(pid)))}</a>${rel ? ` <span class="mp-rel">${esc(rel)}</span>` : ""}`;
         }).join(" &amp; ")}</li>`).join("");
     const popup = `<div class="mp"><div class="mp-title">${esc(shortPlace(place))}</div>
       <div class="mp-sub">${esc(place)}</div><ul>${rows}</ul>
-      <a href="#" class="mp-move" data-move="${esc(place)}">Mal placé ? Déplacer ce lieu</a></div>`;
+      <a href="#" class="mp-move" data-move="${esc(place)}">${esc(t("movePlace"))}</a></div>`;
     const my = mine(evs);
     const r = 6 + 3.2 * Math.sqrt(n - 1);
     if (my.length) {
@@ -296,7 +296,7 @@ function drawMap(fit) {
         return `${esc(fullName(P(pid)))}${rel ? ` <span class="tt-rel">· ${esc(rel)}</span>` : ""}`;
       });
       const more = new Set(evs.flatMap((e) => e.pids)).size - who.length;
-      m.bindTooltip(`<b>${esc(shortPlace(place))}</b><br>${who.join("<br>")}${more > 0 ? `<br><span class="tt-rel">+ ${more} autre${more > 1 ? "s" : ""}</span>` : ""}`,
+      m.bindTooltip(`<b>${esc(shortPlace(place))}</b><br>${who.join("<br>")}${more > 0 ? `<br><span class="tt-rel">${esc(t("others", more))}</span>` : ""}`,
         { direction: "top", offset: [0, -6] });
     }
     m.addTo(MAP.markers);
@@ -314,10 +314,10 @@ function drawMap(fit) {
 
 function renderLegend() {
   $("mapLegend").replaceChildren(...[
-    h("div", { class: "lg-title" }, "Époque"),
+    h("div", { class: "lg-title" }, t("epoch")),
     ...ERAS.map((e) => h("div", { class: "lg-row" }, h("span", { class: "lg-dot", style: `background:${e.color}` }), e.label)),
-    h("div", { class: "lg-row" }, h("span", { class: "lg-dot", style: `background:${NO_DATE}` }), "date inconnue"),
-    MAP.migrations ? h("div", { class: "lg-row" }, h("span", { class: "lg-line" }), "parent → enfant") : null,
+    h("div", { class: "lg-row" }, h("span", { class: "lg-dot", style: `background:${NO_DATE}` }), t("unknownDate")),
+    MAP.migrations ? h("div", { class: "lg-row" }, h("span", { class: "lg-line" }), t("parentChild")) : null,
   ].filter(Boolean));
 }
 
@@ -331,10 +331,10 @@ function renderControls() {
     h("input", { type: "radio", name: "mapmode", value: val, checked: MAP.mode === val,
       onchange: () => { MAP.mode = val; store.set("map.mode", val); drawMap(true); } }), label);
   el.replaceChildren(...[
-    h("div", { class: "ctl-title" }, "Qui ?"),
-    radio("anc", `Ancêtres de ${rootP ? fullName(rootP) : "…"}`),
-    radio("all", "Tout l'arbre"),
-    h("div", { class: "ctl-title" }, "Quoi ?"),
+    h("div", { class: "ctl-title" }, t("who")),
+    radio("anc", t("ancestorsOf", rootP ? fullName(rootP) : "…")),
+    radio("all", t("wholeTree")),
+    h("div", { class: "ctl-title" }, t("what")),
     ...Object.keys(GROUP_LABEL).map((g) => h("label", { class: "ctl-opt" },
       h("input", { type: "checkbox", checked: MAP.groups[g],
         onchange: (e) => { MAP.groups[g] = e.target.checked; store.set("map.groups", MAP.groups); drawMap(false); } }),
@@ -342,24 +342,24 @@ function renderControls() {
     h("label", { class: "ctl-opt" },
       h("input", { type: "checkbox", checked: MAP.migrations,
         onchange: (e) => { MAP.migrations = e.target.checked; store.set("map.migr", MAP.migrations); drawMap(false); } }),
-      "Trajets parent → enfant"),
+      t("paths")),
     rootP ? h("div", { class: "ctl-me" },
       h("span", { class: "ctl-me-dot" }),
       (MAP.rootPts || []).length
-        ? `${fullName(rootP)} : ${MAP.rootPts.length} lieu${MAP.rootPts.length > 1 ? "x" : ""} en évidence`
-        : `${fullName(rootP)} : aucun lieu renseigné`) : null,
+        ? t("highlighted", fullName(rootP), MAP.rootPts.length)
+        : t("noPlace", fullName(rootP))) : null,
     h("div", { class: "ctl-stats" },
-      `${st.places} lieux · ${st.shown} évènements sur la carte`,
-      st.events > st.shown ? h("div", { class: "ctl-muted" }, `${st.events - st.shown} sans position`) : null,
-      MAP.serverOld ? h("div", { class: "ctl-muted" }, "Relance l'appli (lancer.bat) pour enregistrer les positions dans data/lieux.json.") : null),
+      t("stats", st.places, st.shown),
+      st.events > st.shown ? h("div", { class: "ctl-muted" }, t("noPos", st.events - st.shown)) : null,
+      MAP.serverOld ? h("div", { class: "ctl-muted" }, t("serverOld")) : null),
     MAP.geocoding ? h("div", { class: "ctl-progress" },
-      h("div", null, `Localisation des lieux… ${MAP.progress.done}/${MAP.progress.total}`),
+      h("div", null, t("locating", MAP.progress.done, MAP.progress.total)),
       h("div", { class: "bar" }, h("span", { style: `width:${(100 * MAP.progress.done / Math.max(1, MAP.progress.total)).toFixed(0)}%` }))) : null,
     unknown.length ? h("details", { class: "ctl-unknown" },
-      h("summary", null, `${unknown.length} lieu${unknown.length > 1 ? "x" : ""} introuvable${unknown.length > 1 ? "s" : ""}`),
+      h("summary", null, t("notFound", unknown.length)),
       h("ul", null, unknown.map((pl) => h("li", null,
         h("span", { title: pl }, shortPlace(pl)),
-        h("button", { class: "btn link", onclick: () => startPlacing(pl) }, "Placer")))),
+        h("button", { class: "btn link", onclick: () => startPlacing(pl) }, t("placeBtn"))))),
       h("button", { class: "btn small", style: "margin-top:6px", disabled: MAP.geocoding,
         onclick: async () => {
           unknown.forEach((p) => delete MAP.places[p]);
@@ -367,7 +367,7 @@ function renderControls() {
           const res = await fetch("/api/places", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ updates: upd }) });
           if (res.ok) MAP.places = { ...MAP.places, ...(await res.json()) };
           geocodeMissing();
-        } }, "Réessayer")) : null,
+        } }, t("retry"))) : null,
   ].filter(Boolean));
 }
 
@@ -415,7 +415,7 @@ window.mapRefresh = (rootChanged) => {
 $("viewTree").onclick = () => showView("tree");
 $("viewMap").onclick = () => showView("map");
 document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && MAP.placing) { MAP.placing = null; $("map").classList.remove("placing"); toast("Placement annulé"); }
+  if (e.key === "Escape" && MAP.placing) { MAP.placing = null; $("map").classList.remove("placing"); toast(t("placingCancelled")); }
 });
 // rouvrir la dernière vue utilisée (une fois les données chargées)
 (function waitData() {

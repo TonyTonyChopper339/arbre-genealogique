@@ -5,25 +5,12 @@
    ===================================================================== */
 const W = 196, WC = 150, H = 66, HGAP = 18, ROW = H + 56;
 
-const EVENT_LABELS = {
-  BIRT: "Naissance", CHR: "Baptême (CHR)", BAPM: "Baptême", DEAT: "Décès", BURI: "Inhumation",
-  CREM: "Crémation", OCCU: "Profession", RESI: "Résidence", NATU: "Naturalisation",
-  IMMI: "Immigration", EMIG: "Émigration", EDUC: "Études", RELI: "Religion", TITL: "Titre",
-  GRAD: "Diplôme", RETI: "Retraite", CENS: "Recensement", CONF: "Confirmation", ADOP: "Adoption",
-  WILL: "Testament", PROB: "Succession", EVEN: "Autre évènement", FACT: "Fait", NATI: "Nationalité",
-  DSCR: "Description physique",
-  ENGA: "Fiançailles", MARB: "Publication des bans", MARC: "Contrat de mariage", MARL: "Licence de mariage",
-  MARS: "Accord de mariage", MARR: "Mariage", DIV: "Divorce", DIVF: "Demande de divorce", ANUL: "Annulation",
-};
+const EVENT_LABELS = EVENT_LABELS_I18N[LANG] || EVENT_LABELS_I18N.fr;
 const PERSON_EVENTS = ["BIRT", "BAPM", "CHR", "DEAT", "BURI", "CREM", "OCCU", "RESI", "NATU", "IMMI",
   "EMIG", "EDUC", "GRAD", "RELI", "TITL", "RETI", "CENS", "CONF", "ADOP", "WILL", "PROB", "NATI", "DSCR", "FACT", "EVEN"];
 const FAMILY_EVENTS = ["MARR", "ENGA", "MARB", "MARC", "MARL", "MARS", "DIV", "DIVF", "ANUL", "CENS", "EVEN"];
 // évènements dont la "valeur" est une information (et pas juste "Y")
-const VALUE_LABELS = {
-  OCCU: "Profession", TITL: "Titre", EDUC: "Diplôme / école", RELI: "Religion", NATI: "Nationalité",
-  DSCR: "Description", EVEN: "Description", FACT: "Description", GRAD: "Diplôme", CENS: "Détail",
-  RESI: "Détail",
-};
+const VALUE_LABELS = VALUE_LABELS_I18N[LANG] || VALUE_LABELS_I18N.fr;
 
 /* =====================================================================
    Dates GEDCOM <-> français
@@ -42,6 +29,7 @@ function gedPartToFr(p, numeric) {
   if (!m) return null;
   const mi = m[2] ? MONTHS.indexOf(m[2]) : -1;
   if (m[2] && mi < 0) return null;
+  if (!numeric && LANG !== "fr") return datePartI18n(m[1], mi, m[3]);
   if (numeric) {
     const parts = [];
     if (m[1]) parts.push(m[1].padStart(2, "0"));
@@ -57,6 +45,15 @@ function gedDateToFr(d, numeric = false) {
   const s = d.trim();
   let m;
   const P = (x) => gedPartToFr(x, numeric);
+  const W = !numeric && DATE_WORDS[LANG];
+  if (W) {
+    if ((m = /^BET (.+) AND (.+)$/.exec(s)) && P(m[1]) && P(m[2])) return W.BET(P(m[1]), P(m[2]));
+    if ((m = /^FROM (.+) TO (.+)$/.exec(s)) && P(m[1]) && P(m[2])) return W.FROMTO(P(m[1]), P(m[2]));
+    if ((m = /^FROM (.+)$/.exec(s)) && P(m[1])) return W.FROM(P(m[1]));
+    if ((m = /^TO (.+)$/.exec(s)) && P(m[1])) return W.TO(P(m[1]));
+    if ((m = /^(ABT|BEF|AFT|EST|CAL) (.+)$/.exec(s)) && P(m[2])) return W[m[1]](P(m[2]));
+    return P(s) ?? s;
+  }
   if ((m = /^BET (.+) AND (.+)$/.exec(s)) && P(m[1]) && P(m[2])) return `entre ${P(m[1])} et ${P(m[2])}`;
   if ((m = /^FROM (.+) TO (.+)$/.exec(s)) && P(m[1]) && P(m[2])) return `de ${P(m[1])} à ${P(m[2])}`;
   if ((m = /^FROM (.+)$/.exec(s)) && P(m[1])) return `depuis ${P(m[1])}`;
@@ -102,22 +99,25 @@ function frDateToGed(input) {
   const s = norm(input).replace(/\s+/g, " ");
   if (!s) return "";
   let m;
-  if ((m = /^(?:entre|bet) (.+) (?:et|and) (.+)$/.exec(s))) {
+  // hongrois : mots après la date (« 1850 körül », « 1850 és 1860 között »)
+  if ((m = /^(.+) es (.+) kozott$/.exec(s))) s = `entre ${m[1]} et ${m[2]}`;
+  else if ((m = /^(.+) (korul|elott|utan)$/.exec(s))) s = `${{ korul: "vers", elott: "avant", utan: "apres" }[m[2]]} ${m[1]}`;
+  if ((m = /^(?:entre|bet|between|mezi) (.+) (?:et|and|a) (.+)$/.exec(s))) {
     const a = frPartToGed(m[1]), b = frPartToGed(m[2]);
     return a && b ? `BET ${a} AND ${b}` : null;
   }
-  if ((m = /^(?:de|from) (.+) (?:a|au|to) (.+)$/.exec(s))) {
+  if ((m = /^(?:de|from|od) (.+) (?:a|au|to|do) (.+)$/.exec(s))) {
     const a = frPartToGed(m[1]), b = frPartToGed(m[2]);
     return a && b ? `FROM ${a} TO ${b}` : null;
   }
-  if ((m = /^(?:depuis|from) (.+)$/.exec(s))) { const a = frPartToGed(m[1]); return a ? `FROM ${a}` : null; }
-  if ((m = /^(?:jusqu'a|jusqu’a|to) (.+)$/.exec(s))) { const a = frPartToGed(m[1]); return a ? `TO ${a}` : null; }
+  if ((m = /^(?:depuis|from|since|od) (.+)$/.exec(s))) { const a = frPartToGed(m[1]); return a ? `FROM ${a}` : null; }
+  if ((m = /^(?:jusqu'a|jusqu’a|to|until|do) (.+)$/.exec(s))) { const a = frPartToGed(m[1]); return a ? `TO ${a}` : null; }
   const prefixes = [
-    [/^(?:vers|env\.?|environ|ca\.?|circa|~|abt) ?(.+)$/, "ABT"],
-    [/^(?:avant|av\.?|bef) (.+)$/, "BEF"],
-    [/^(?:apres|ap\.?|aft) (.+)$/, "AFT"],
-    [/^(?:estime|est) (.+)$/, "EST"],
-    [/^(?:calcule|cal) (.+)$/, "CAL"],
+    [/^(?:vers|env\.?|environ|ca\.?|circa|~|abt|about|kolem|asi|cca\.?|kb\.?) ?(.+)$/, "ABT"],
+    [/^(?:avant|av\.?|bef|before|pred) (.+)$/, "BEF"],
+    [/^(?:apres|ap\.?|aft|after|po) (.+)$/, "AFT"],
+    [/^(?:estime|est|estimated|odhadem) (.+)$/, "EST"],
+    [/^(?:calcule|cal|calculated|vypocteno) (.+)$/, "CAL"],
   ];
   for (const [re, tag] of prefixes) {
     if ((m = re.exec(s))) { const a = frPartToGed(m[1]); return a ? `${tag} ${a}` : null; }
@@ -135,6 +135,7 @@ const state = {
   root: null,
   genUp: 99,
   genDown: 2,
+  showSibs: true,
   view: { x: 0, y: 0, k: 1 },
   editing: false,
   layout: null,
@@ -156,7 +157,7 @@ function initials(p) {
 function fullName(p) {
   if (!p) return "?";
   const n = `${givenDisplay(p)} ${p.surname || ""}`.trim();
-  return n || "(sans nom)";
+  return n || t("noName");
 }
 function findEvent(p, tags) {
   for (const t of tags) { const e = p.events.find((e) => e.tag === t); if (e) return e; }
@@ -250,7 +251,7 @@ async function api(method, url, body) {
   let json = {};
   try { json = await res.json(); } catch { /* vide */ }
   if (!res.ok) {
-    toast(json.error || `Erreur ${res.status}`, true);
+    toast(json.error || t("error", res.status), true);
     throw new Error(json.error || res.status);
   }
   if (json.data) setData(json.data);
@@ -260,7 +261,7 @@ async function api(method, url, body) {
 function setData(data) {
   state.data = data;
   if (!P(state.root)) state.root = defaultRoot();
-  $("count").textContent = `${Object.keys(data.persons).length} personnes`;
+  $("count").textContent = t("persons", Object.keys(data.persons).length);
   $("undo").disabled = !data.meta.canUndo;
   $("redo").disabled = !data.meta.canRedo;
 }
@@ -372,7 +373,7 @@ function computeLayout(rootId) {
 
   // ---- frères et sœurs (même ligne, au-delà des conjoints : aînés à gauche, cadets à droite)
   const pf = parentsOf(rootId).fam;
-  const sibOrder = pf && F(pf) ? F(pf).children.filter((c) => P(c)) : [rootId];
+  const sibOrder = state.showSibs && pf && F(pf) ? F(pf).children.filter((c) => P(c)) : [rootId];
   const ri = sibOrder.indexOf(rootId);
   const nRight = Math.ceil(unions.length / 2), nLeft = Math.floor(unions.length / 2);
   const rowKids = [root];
@@ -459,9 +460,9 @@ function renderTree(recenter) {
     if (c.ghost) {
       return h("div", {
         class: "card ghost", style: `left:${c.x}px;top:${c.y}px`, "data-ghost": c.ghost,
-        title: c.ghost === "father" ? "Ajouter le père" : "Ajouter la mère",
+        title: c.ghost === "father" ? t("addFather") : t("addMother"),
         onclick: () => openRelationModal(c.ghost, state.root, parentsOf(state.root).fam),
-      }, c.ghost === "father" ? "+ Ajouter le père" : "+ Ajouter la mère");
+      }, "+ " + (c.ghost === "father" ? t("addFather") : t("addMother")));
     }
     const p = P(c.id);
     const { father, mother } = parentsOf(c.id);
@@ -476,7 +477,7 @@ function renderTree(recenter) {
       h("div", { class: "n1" }, givenDisplay(p) || "?"),
       h("div", { class: "n2" }, (p.surname || "").toUpperCase()),
       h("div", { class: "yrs" }, lifespan(p) || " ")),
-    hiddenParents ? h("span", { class: "more", title: "A des parents (cliquer pour voir)" }, "▲") : null);
+    hiddenParents ? h("span", { class: "more", title: t("hasParents") }, "▲") : null);
   }));
   const svg = $("links");
   const NS = "http://www.w3.org/2000/svg";
@@ -635,7 +636,7 @@ function personChip(id, { onRemove, removeTitle } = {}) {
     h("span", { class: `sexdot ${p.sex}` }),
     h("button", { class: "go", onclick: () => selectPerson(id) }, fullName(p)),
     lifespan(p) ? h("span", { class: "y" }, lifespan(p)) : null,
-    onRemove ? h("button", { class: "x", title: removeTitle || "Retirer ce lien", "aria-label": removeTitle || "Retirer ce lien", onclick: onRemove }, "×") : null);
+    onRemove ? h("button", { class: "x", title: removeTitle || t("removeLink"), "aria-label": removeTitle || t("removeLink"), onclick: onRemove }, "×") : null);
 }
 
 function linkify(text) {
@@ -647,31 +648,31 @@ function linkify(text) {
 
 function eventView(e) {
   const lbl = EVENT_LABELS[e.tag] || e.tag;
-  const val = e.value && e.value !== "Y" ? e.value : "";
+  const val = e.value && e.value !== "Y" ? tr(e.value) : "";
   const meta = [gedDateToFr(e.date), e.place].filter(Boolean).join(" · ");
   return h("div", { class: "ev" },
-    h("div", null, h("span", { class: "lbl" }, lbl), val ? ` : ${val}` : ""),
+    h("div", null, h("span", { class: "lbl" }, lbl), val ? (LANG === "fr" ? " : " : ": ") + val : ""),
     meta ? h("div", { class: "meta" }, meta) : null,
-    e.sources.map((s) => h("div", { class: "src" }, "Source : ", linkify(s))),
-    e.notes.map((s) => h("div", { class: "src" }, "Note : ", linkify(s))));
+    e.sources.map((s) => h("div", { class: "src" }, t("sourceP"), linkify(tr(s)))),
+    e.notes.map((s) => h("div", { class: "src" }, t("noteP"), linkify(tr(s)))));
 }
 
 function renderPanel() {
   const panel = $("panel");
   const id = state.root;
   const p = P(id);
-  if (!p) { panel.replaceChildren(h("p", { class: "empty-note" }, "Aucune personne. Ajoute-en une avec « + Personne ».")); return; }
+  if (!p) { panel.replaceChildren(h("p", { class: "empty-note" }, t("noPersons"))); return; }
   if (state.editing) {
     panel.replaceChildren(
-      h("h1", null, "Modifier"),
+      h("h1", null, t("edit")),
       h("p", { class: "sub" }, fullName(p)),
       personForm(p, {
-        submitLabel: "Enregistrer",
+        submitLabel: t("save"),
         onCancel: () => { state.editing = false; renderPanel(); },
         onSubmit: async (data) => {
           await api("PUT", `/api/person/${enc(id)}`, data);
           state.editing = false;
-          toast("Enregistré");
+          toast(t("saved"));
           refresh();
         },
       }));
@@ -687,72 +688,72 @@ function renderPanel() {
         h("h1", null, fullName(p)),
         h("p", { class: "sub" }, [lifespan(p), id.replace(/@/g, "")].filter(Boolean).join(" · ")))),
     h("div", { class: "actions" },
-      h("button", { class: "btn", onclick: () => { state.editing = true; renderPanel(); } }, "Modifier"),
-      h("button", { class: "btn danger", onclick: () => deletePerson(id) }, "Supprimer")),
+      h("button", { class: "btn", onclick: () => { state.editing = true; renderPanel(); } }, t("edit")),
+      h("button", { class: "btn danger", onclick: () => deletePerson(id) }, t("delete"))),
   ];
 
-  out.push(h("h3", null, "Évènements"));
-  out.push(p.events.length ? h("div", { class: "timeline" }, p.events.map(eventView)) : h("p", { class: "empty-note" }, "Aucun évènement."));
+  out.push(h("h3", null, t("events")));
+  out.push(p.events.length ? h("div", { class: "timeline" }, p.events.map(eventView)) : h("p", { class: "empty-note" }, t("noEvents")));
 
-  if (p.notes.length) out.push(h("h3", null, "Notes"), h("div", { class: "notes" }, p.notes.map((n) => h("p", null, linkify(n)))));
-  if (p.sources.length) out.push(h("h3", null, "Sources"), h("div", { class: "notes" }, p.sources.map((n) => h("p", null, linkify(n)))));
+  if (p.notes.length) out.push(h("h3", null, t("notes")), h("div", { class: "notes" }, p.notes.map((n) => h("p", null, linkify(tr(n))))));
+  if (p.sources.length) out.push(h("h3", null, t("sources")), h("div", { class: "notes" }, p.sources.map((n) => h("p", null, linkify(tr(n))))));
 
   // Parents
-  out.push(h("h3", null, "Parents"));
+  out.push(h("h3", null, t("parents")));
   const parentRow = [];
   for (const [role, pid] of [["father", par.father], ["mother", par.mother]]) {
     if (pid && P(pid)) {
       parentRow.push(personChip(pid, {
-        removeTitle: "Retirer ce parent",
-        onRemove: () => unlink(par.fam, pid, `Retirer ${fullName(P(pid))} des parents de ${fullName(p)} ?`),
+        removeTitle: t("removeParent"),
+        onRemove: () => unlink(par.fam, pid, t("confirmRemoveParent", fullName(P(pid)), fullName(p))),
       }));
     } else {
       parentRow.push(h("button", { class: "btn small", onclick: () => openRelationModal(role, id, par.fam) },
-        role === "father" ? "+ Père" : "+ Mère"));
+        role === "father" ? t("plusFather") : t("plusMother")));
     }
   }
   out.push(h("div", { class: "chips" }, parentRow));
 
   const sibs = siblingsOf(id);
   if (sibs.length) {
-    out.push(h("h3", null, "Frères et sœurs"));
+    out.push(h("h3", null, t("siblings")));
     out.push(h("div", { class: "chips" }, sibs.map((s) => personChip(s))));
   }
 
   // Unions
-  out.push(h("h3", null, "Unions et enfants",
-    h("button", { class: "btn link", onclick: () => openRelationModal("spouse", id, null) }, "+ Conjoint")));
+  out.push(h("h3", null, t("unions"),
+    h("button", { class: "btn link", onclick: () => openRelationModal("spouse", id, null) }, t("plusSpouse"))));
   const unions = unionsOf(id);
   if (!unions.length) {
-    out.push(h("p", { class: "empty-note" }, "Aucune union enregistrée."));
-    out.push(h("button", { class: "btn small", onclick: () => openRelationModal("child", id, null) }, "+ Enfant"));
+    out.push(h("p", { class: "empty-note" }, t("noUnion")));
+    out.push(h("button", { class: "btn small", onclick: () => openRelationModal("child", id, null) }, t("plusChild")));
   }
   for (const u of unions) {
     const f = u.fam;
     const evs = f.events.map((e) => {
       const v = [gedDateToFr(e.date), e.place].filter(Boolean).join(", ");
-      return `${EVENT_LABELS[e.tag] || e.tag}${v ? " : " + v : ""}`;
+      return `${EVENT_LABELS[e.tag] || e.tag}${LANG === "fr" ? " " : ""}${v ? ": " + v : ""}`.replace(/ $/, "");
     });
     out.push(h("div", { class: "union" },
       h("div", { class: "union-head" },
         u.spouse && P(u.spouse)
           ? personChip(u.spouse, {
-            removeTitle: "Retirer ce conjoint",
-            onRemove: () => unlink(f.id, u.spouse, `Retirer ${fullName(P(u.spouse))} de cette union ?`),
+            removeTitle: t("removeSpouse"),
+            onRemove: () => unlink(f.id, u.spouse, t("confirmRemoveSpouse", fullName(P(u.spouse)))),
           })
-          : h("span", { class: "empty-note" }, "Conjoint inconnu ",
-            h("button", { class: "btn link", onclick: () => openRelationModal("spouse", id, f.id) }, "+ ajouter")),
-        h("button", { class: "btn small", onclick: () => openFamilyModal(f.id) }, "Mariage…")),
+          : h("span", { class: "empty-note" }, t("unknownSpouse"),
+            h("button", { class: "btn link", onclick: () => openRelationModal("spouse", id, f.id) }, t("plusAdd"))),
+        h("button", { class: "btn small", onclick: () => openFamilyModal(f.id) }, t("marriageBtn"))),
       evs.length ? h("div", { class: "meta" }, evs.join(" · ")) : null,
       h("div", { class: "chips", style: "margin-top:8px" },
         f.children.filter((c) => P(c)).map((c) => personChip(c, {
-          removeTitle: "Retirer cet enfant",
-          onRemove: () => unlink(f.id, c, `Retirer ${fullName(P(c))} des enfants de cette union ?`),
+          removeTitle: t("removeChild"),
+          onRemove: () => unlink(f.id, c, t("confirmRemoveChild", fullName(P(c)))),
         })),
-        h("button", { class: "btn small", onclick: () => openRelationModal("child", id, f.id) }, "+ Enfant"))));
+        h("button", { class: "btn small", onclick: () => openRelationModal("child", id, f.id) }, t("plusChild")))));
   }
 
-  out.push(h("p", { class: "empty-note", style: "margin-top:28px" }, `Fichier : ${state.data.meta.file || ""}`));
+  out.push(h("p", { class: "empty-note", style: "margin-top:28px" }, t("file") + (state.data.meta.file || "")));
   panel.replaceChildren(...out.flat());
 }
 
@@ -761,17 +762,17 @@ const enc = (id) => encodeURIComponent(id);
 async function unlink(fam, person, question) {
   if (!(await confirmModal(question))) return;
   await api("POST", "/api/unlink", { fam, person });
-  toast("Lien retiré");
+  toast(t("linkRemoved"));
   refresh();
 }
 
 async function deletePerson(id) {
   const p = P(id);
-  if (!(await confirmModal(`Supprimer définitivement ${fullName(p)} de l'arbre ? (Annulable avec Ctrl+Z)`, "Supprimer"))) return;
+  if (!(await confirmModal(t("confirmDelete", fullName(p)), t("delete")))) return;
   const { father, mother } = parentsOf(id);
   const next = [father, mother, ...unionsOf(id).map((u) => u.spouse), ...childrenOf(id)].find((x) => x && x !== id);
   await api("DELETE", `/api/person/${enc(id)}`);
-  toast("Personne supprimée");
+  toast(t("personDeleted"));
   selectPerson(P(next) ? next : defaultRoot());
 }
 
@@ -790,29 +791,29 @@ function listEditor(values, placeholder) {
     const ta = h("textarea", { rows: 2, placeholder }, );
     ta.value = v || "";
     const row = h("div", { class: "row", style: "align-items:flex-start" }, ta,
-      h("button", { type: "button", class: "icon-btn", style: "flex:0 0 32px", title: "Supprimer", "aria-label": "Supprimer",
+      h("button", { type: "button", class: "icon-btn", style: "flex:0 0 32px", title: t("delete"), "aria-label": t("delete"),
         onclick: () => { row.remove(); items.splice(items.indexOf(ta), 1); } }, "×"));
     items.push(ta);
     wrap.insertBefore(row, addBtn);
   };
-  const addBtn = h("button", { type: "button", class: "btn link", style: "align-self:flex-start", onclick: () => add("") }, "+ Ajouter une note");
+  const addBtn = h("button", { type: "button", class: "btn link", style: "align-self:flex-start", onclick: () => add("") }, t("addNote"));
   wrap.append(addBtn);
   values.forEach(add);
   return { el: wrap, get: () => items.map((t) => t.value).filter((v) => v.trim()) };
 }
 
 function sourcesEditor(values) {
-  const ta = h("textarea", { rows: 2, placeholder: "Une source par ligne (cote d'archive, lien…)" });
+  const ta = h("textarea", { rows: 2, placeholder: t("sourcesPh") });
   ta.value = values.join("\n");
   return { el: ta, get: () => ta.value.split("\n").map((s) => s.trim()).filter(Boolean) };
 }
 
 function dateInput(orig) {
   const shown = gedDateToFr(orig, true);
-  const input = h("input", { type: "text", placeholder: "ex. 14/11/1968, vers 1850, avant 1936", autocomplete: "off" });
+  const input = h("input", { type: "text", placeholder: t("datePh"), autocomplete: "off" });
   input.value = shown;
   const hint = h("span", { class: "hint" });
-  const wrap = h("label", { class: "field" }, h("span", null, "Date"), input, hint);
+  const wrap = h("label", { class: "field" }, h("span", null, t("dateLabel")), input, hint);
   const compute = () => {
     if (input.value.trim() === shown.trim()) return orig || "";
     return frDateToGed(input.value);
@@ -821,7 +822,7 @@ function dateInput(orig) {
     const g = compute();
     wrap.classList.toggle("invalid", g === null);
     hint.className = g === null ? "err" : "hint";
-    hint.textContent = g === null ? "Format non reconnu (ex. 14/11/1968, 11/1968, 1968, vers 1850, entre 1850 et 1860)"
+    hint.textContent = g === null ? t("dateBad")
       : g ? `→ ${gedDateToFr(g)}` : "";
   };
   input.addEventListener("input", update);
@@ -830,31 +831,31 @@ function dateInput(orig) {
 }
 
 function eventEditor(ev, allowed, onRemove) {
-  const sel = h("select", { "aria-label": "Type d'évènement" },
+  const sel = h("select", { "aria-label": t("eventType") },
     allowed.map((t) => h("option", { value: t, selected: t === ev.tag }, EVENT_LABELS[t] || t)));
   if (!allowed.includes(ev.tag)) sel.prepend(h("option", { value: ev.tag, selected: true }, ev.tag));
   const date = dateInput(ev.date);
-  const place = h("input", { type: "text", placeholder: "Commune, département, pays…" });
+  const place = h("input", { type: "text", placeholder: t("placePh") });
   place.value = ev.place || "";
   const val = h("input", { type: "text" });
   val.value = ev.value && ev.value !== "Y" ? ev.value : "";
-  const valField = field("Détail", val);
+  const valField = field(t("detail"), val);
   const syncVal = () => {
     const lbl = VALUE_LABELS[sel.value];
     valField.style.display = lbl || val.value ? "" : "none";
-    valField.querySelector("span").textContent = lbl || "Détail";
+    valField.querySelector("span").textContent = lbl || t("detail");
   };
   sel.addEventListener("change", syncVal);
   syncVal();
   const sources = sourcesEditor(ev.sources || []);
-  const notes = listEditor(ev.notes || [], "Note");
+  const notes = listEditor(ev.notes || [], t("note"));
   const el = h("div", { class: "evform" },
     h("div", { class: "top" }, sel, h("span", { class: "spacer" }),
-      h("button", { type: "button", class: "btn link danger", onclick: () => { el.remove(); onRemove(); } }, "Supprimer")),
+      h("button", { type: "button", class: "btn link danger", onclick: () => { el.remove(); onRemove(); } }, t("delete"))),
     valField,
-    h("div", { class: "row" }, date.el, field("Lieu", place)),
-    field("Sources", sources.el),
-    h("div", { class: "field" }, h("span", null, "Notes"), notes.el));
+    h("div", { class: "row" }, date.el, field(t("place"), place)),
+    field(t("sources"), sources.el),
+    h("div", { class: "field" }, h("span", null, t("notes")), notes.el));
   return {
     el,
     get() {
@@ -877,7 +878,7 @@ function eventsEditor(events, allowed, addLabel) {
     eds.push(ed);
     wrap.insertBefore(ed.el, addRow);
   };
-  const typeSel = h("select", { "aria-label": "Type d'évènement à ajouter" },
+  const typeSel = h("select", { "aria-label": t("eventTypeAdd") },
     allowed.map((t) => h("option", { value: t }, EVENT_LABELS[t] || t)));
   const addRow = h("div", { class: "row", style: "align-items:center" }, typeSel,
     h("button", { type: "button", class: "btn", style: "flex:0 0 auto",
@@ -902,32 +903,32 @@ function personForm(p, { onSubmit, onCancel, submitLabel }) {
   const surname = h("input", { type: "text", name: "surname", autocomplete: "off" });
   surname.value = p.surname || "";
   const sexName = "sex" + Math.random().toString(36).slice(2);
-  const sex = h("div", { class: "segmented", role: "radiogroup", "aria-label": "Sexe" },
-    [["M", "Homme"], ["F", "Femme"], ["U", "Inconnu"]].map(([v, l]) =>
+  const sex = h("div", { class: "segmented", role: "radiogroup", "aria-label": t("sex") },
+    [["M", t("male")], ["F", t("female")], ["U", t("unknownSex")]].map(([v, l]) =>
       h("label", null, h("input", { type: "radio", name: sexName, value: v, checked: (p.sex || "U") === v }), l)));
   let events = p.events.map((e) => ({ ...e }));
-  const evEd = eventsEditor(events, PERSON_EVENTS, "+ Évènement");
-  const notes = listEditor(p.notes || [], "Note");
+  const evEd = eventsEditor(events, PERSON_EVENTS, t("plusEvent"));
+  const notes = listEditor(p.notes || [], t("note"));
   const sources = sourcesEditor(p.sources || []);
   const form = h("form", { class: "form" },
     h("div", { class: "row" },
-      field("Prénom(s)", given, h("span", { class: "hint" }, "Séparés par des virgules, comme Geneanet")),
-      field("Nom", surname)),
-    h("div", { class: "field" }, h("span", null, "Sexe"), sex),
-    h("h4", null, "Évènements"),
+      field(t("given"), given, h("span", { class: "hint" }, t("givenHint"))),
+      field(t("surname"), surname)),
+    h("div", { class: "field" }, h("span", null, t("sex")), sex),
+    h("h4", null, t("events")),
     evEd.el,
-    h("h4", null, "Notes"),
+    h("h4", null, t("notes")),
     notes.el,
-    h("h4", null, "Sources"),
+    h("h4", null, t("sources")),
     sources.el,
     h("div", { class: "form-actions" },
-      onCancel ? h("button", { type: "button", class: "btn", onclick: onCancel }, "Annuler") : null,
-      h("button", { type: "submit", class: "btn primary" }, submitLabel || "Enregistrer")));
+      onCancel ? h("button", { type: "button", class: "btn", onclick: onCancel }, t("cancel")) : null,
+      h("button", { type: "submit", class: "btn primary" }, submitLabel || t("save"))));
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const evs = evEd.get();
-    if (evs === null) { toast("Une date n'est pas reconnue, corrige-la avant d'enregistrer.", true); return; }
-    if (!given.value.trim() && !surname.value.trim()) { toast("Indique au moins un prénom ou un nom.", true); given.focus(); return; }
+    if (evs === null) { toast(t("dateInvalidSave"), true); return; }
+    if (!given.value.trim() && !surname.value.trim()) { toast(t("nameRequired"), true); given.focus(); return; }
     const btn = form.querySelector("button[type=submit]");
     btn.disabled = true;
     try {
@@ -972,21 +973,20 @@ function closeModal() {
   if (cb) cb();
 }
 
-function confirmModal(text, okLabel = "Confirmer") {
+function confirmModal(text, okLabel = t("confirm")) {
   return new Promise((resolve) => {
     let answered = false;
     const done = (v) => { answered = true; closeModal(); resolve(v); };
     const ok = h("button", { class: "btn primary", onclick: () => done(true) }, okLabel);
-    openModal("Confirmation", h("div", null,
+    openModal(t("confirmation"), h("div", null,
       h("p", null, text),
       h("div", { class: "form-actions" },
-        h("button", { class: "btn", onclick: () => done(false) }, "Annuler"), ok)),
+        h("button", { class: "btn", onclick: () => done(false) }, t("cancel")), ok)),
     () => { if (!answered) resolve(false); });
     setTimeout(() => ok.focus(), 0);
   });
 }
 
-const ROLE_TITLES = { father: "le père", mother: "la mère", spouse: "un conjoint", child: "un enfant" };
 
 function openRelationModal(role, ofId, fam) {
   const of = P(ofId);
@@ -1006,18 +1006,18 @@ function openRelationModal(role, ofId, fam) {
   const content = h("div");
   const showNew = () => {
     content.replaceChildren(personForm(blankPerson(d), {
-      submitLabel: "Ajouter",
+      submitLabel: t("add"),
       onCancel: closeModal,
       onSubmit: async (person) => {
         await api("POST", "/api/person", { person, link: { type: linkType, of: ofId, fam } });
         closeModal();
-        toast(`${fullName(person)} ajouté(e)`);
+        toast(t("added", fullName(person)));
         refresh();
       },
     }));
   };
   const showExisting = () => {
-    const q = h("input", { type: "search", placeholder: "Nom ou prénom…", autocomplete: "off", "aria-label": "Rechercher" });
+    const q = h("input", { type: "search", placeholder: t("searchPh"), autocomplete: "off", "aria-label": t("searchAria") });
     const list = h("ul", { class: "pick-list" });
     const upd = () => {
       const res = searchPersons(q.value, 50).filter((x) => x !== ofId);
@@ -1025,21 +1025,21 @@ function openRelationModal(role, ofId, fam) {
         onclick: async () => {
           await api("POST", "/api/link", { type: linkType, of: ofId, target: id, fam });
           closeModal();
-          toast("Lien ajouté");
+          toast(t("linkAdded"));
           refresh();
         },
-      }, fullName(P(id)), h("small", null, lifespan(P(id))))) : [h("li", { class: "empty-note" }, "Aucun résultat")]));
+      }, fullName(P(id)), h("small", null, lifespan(P(id))))) : [h("li", { class: "empty-note" }, t("noResult"))]));
     };
     q.addEventListener("input", upd);
     upd();
-    content.replaceChildren(h("div", { class: "form" }, field("Chercher dans l'arbre", q), list));
+    content.replaceChildren(h("div", { class: "form" }, field(t("searchInTree"), q), list));
     setTimeout(() => q.focus(), 0);
   };
-  const b1 = h("button", { class: "on", onclick: () => { b1.className = "on"; b2.className = ""; showNew(); } }, "Nouvelle personne");
-  const b2 = h("button", { onclick: () => { b2.className = "on"; b1.className = ""; showExisting(); } }, "Personne déjà dans l'arbre");
+  const b1 = h("button", { class: "on", onclick: () => { b1.className = "on"; b2.className = ""; showNew(); } }, t("tabNew"));
+  const b2 = h("button", { onclick: () => { b2.className = "on"; b1.className = ""; showExisting(); } }, t("tabExisting"));
   tabs.append(b1, b2);
   showNew();
-  openModal(`Ajouter ${ROLE_TITLES[role]} — ${fullName(of)}`, h("div", null, tabs, content));
+  openModal(t("roleTitle", role, fullName(of)), h("div", null, tabs, content));
 }
 
 function openFamilyModal(fid) {
@@ -1047,29 +1047,29 @@ function openFamilyModal(fid) {
   const names = [f.husb, f.wife].filter((x) => x && P(x)).map((x) => fullName(P(x))).join(" & ");
   const events = f.events.length ? f.events.map((e) => ({ ...e }))
     : [{ tag: "MARR", value: "", date: "", place: "", sources: [], notes: [], extra: [], _tpl: true }];
-  const evEd = eventsEditor(events, FAMILY_EVENTS, "+ Évènement");
-  const notes = listEditor(f.notes, "Note");
+  const evEd = eventsEditor(events, FAMILY_EVENTS, t("plusEvent"));
+  const notes = listEditor(f.notes, t("note"));
   const sources = sourcesEditor(f.sources);
   const form = h("form", { class: "form" },
-    evEd.el, h("h4", null, "Notes"), notes.el, h("h4", null, "Sources"), sources.el,
+    evEd.el, h("h4", null, t("notes")), notes.el, h("h4", null, t("sources")), sources.el,
     h("div", { class: "form-actions" },
-      h("button", { type: "button", class: "btn", onclick: closeModal }, "Annuler"),
-      h("button", { type: "submit", class: "btn primary" }, "Enregistrer")));
+      h("button", { type: "button", class: "btn", onclick: closeModal }, t("cancel")),
+      h("button", { type: "submit", class: "btn primary" }, t("save"))));
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const evs = evEd.get();
-    if (evs === null) { toast("Une date n'est pas reconnue.", true); return; }
+    if (evs === null) { toast(t("dateInvalid"), true); return; }
     await api("PUT", `/api/family/${enc(fid)}`, { events: evs, notes: notes.get(), sources: sources.get(), extra: f.extra });
     closeModal();
-    toast("Union enregistrée");
+    toast(t("unionSaved"));
     refresh();
   });
-  openModal(`Union — ${names || "?"}`, form);
+  openModal(t("unionTitle", names || "?"), form);
 }
 
 function openNewPersonModal() {
-  openModal("Nouvelle personne (non reliée)", personForm(blankPerson(), {
-    submitLabel: "Ajouter",
+  openModal(t("newUnlinked"), personForm(blankPerson(), {
+    submitLabel: t("add"),
     onCancel: closeModal,
     onSubmit: async (person) => {
       const res = await api("POST", "/api/person", { person });
@@ -1103,7 +1103,7 @@ function setupSearch() {
     list.replaceChildren(...(res.length
       ? res.map((id, i) => h("li", { class: i === active ? "active" : "", onmousedown: (e) => { e.preventDefault(); pick(id); } },
         h("span", null, fullName(P(id))), h("small", null, lifespan(P(id)))))
-      : [h("li", { class: "empty" }, "Aucun résultat")]));
+      : [h("li", { class: "empty" }, t("noResult"))]));
     list.hidden = false;
   };
   const pick = (id) => { input.value = ""; list.hidden = true; input.blur(); selectPerson(id); };
@@ -1123,11 +1123,12 @@ function setupSearch() {
    ===================================================================== */
 async function undoRedo(which) {
   try { await api("POST", `/api/${which}`); } catch { return; }
-  toast(which === "undo" ? "Modification annulée" : "Modification rétablie");
+  toast(which === "undo" ? t("undone") : t("redone"));
   refresh();
 }
 
 async function init() {
+  applyStaticI18n();
   setupCanvas();
   setupSearch();
   state.genUp = +store.get("genUp", 99);
@@ -1139,6 +1140,9 @@ async function init() {
   if ($("genDown").value !== String(state.genDown)) { state.genDown = 2; $("genDown").value = "2"; }
   $("genUp").onchange = (e) => { state.genUp = +e.target.value; store.set("genUp", state.genUp); renderTree(true); };
   $("genDown").onchange = (e) => { state.genDown = +e.target.value; store.set("genDown", state.genDown); renderTree(true); };
+  state.showSibs = !!store.get("showSibs", true);
+  $("showSibs").checked = state.showSibs;
+  $("showSibs").onchange = (e) => { state.showSibs = e.target.checked; store.set("showSibs", state.showSibs); renderTree(true); };
   setupTheme();
   $("undo").onclick = () => undoRedo("undo");
   $("redo").onclick = () => undoRedo("redo");
@@ -1157,7 +1161,7 @@ async function init() {
     if (P(id) && id !== state.root) selectPerson(id);
   });
 
-  const res = await fetch("/api/data");
+  const [res] = await Promise.all([fetch("/api/data"), loadTranslations()]);
   setData(await res.json());
   const fromHash = location.hash.length > 1 ? "@" + decodeURIComponent(location.hash.slice(1)) + "@" : null;
   const start = [fromHash, store.get("root", null)].find((x) => x && P(x)) || defaultRoot();
@@ -1197,100 +1201,98 @@ function bloodRelation(a, b) {
   return best;
 }
 
-function relationLabel(rootId, otherId) {
-  if (!rootId || !otherId) return "";
-  if (rootId === otherId) return "";
+function relationInfo(rootId, otherId) {
+  if (!rootId || !otherId || rootId === otherId) return null;
   const o = P(otherId);
-  if (!o) return "";
-  const F_ = o.sex === "F";
-  const g = (m, f) => (F_ ? f : m);
+  if (!o) return null;
+  const f = o.sex === "F";
   const r = bloodRelation(rootId, otherId);
   if (r) {
     const { up, down } = r;
     // côté paternel / maternel (vu depuis la personne de référence)
     let side = "";
-    if (up >= 2 || (up >= 1 && down >= 1 && up >= 2)) {
+    if (up >= 2) {
       const { father, mother } = parentsOf(rootId);
       const viaF = father && ancestorDistances(father).has(r.anc);
       const viaM = mother && ancestorDistances(mother).has(r.anc);
-      if (viaF && !viaM) side = " paternel";
-      else if (viaM && !viaF) side = " maternel";
-      if (side && F_) side += "le";
+      if (viaF && !viaM) side = "P";
+      else if (viaM && !viaF) side = "M";
     }
+    const R_ = (k, extra = {}) => ({ k, f, side, ...extra });
     if (down === 0) {  // ancêtre
-      if (up === 1) return g("père", "mère");
-      if (up === 2) return g("grand-père", "grand-mère") + side;
-      if (up === 3) return g("arrière-grand-père", "arrière-grand-mère") + side;
-      if (up === 4) return g("arrière-arrière-grand-père", "arrière-arrière-grand-mère") + side;
-      return `ancêtre${side} (${up}e génération)`;
+      if (up === 1) return R_("parent");
+      if (up === 2) return R_("gp");
+      if (up === 3) return R_("ggp");
+      if (up === 4) return R_("gggp");
+      return R_("anc", { n: up });
     }
     if (up === 0) {  // descendant
-      if (down === 1) return g("fils", "fille");
-      if (down === 2) return g("petit-fils", "petite-fille");
-      if (down === 3) return g("arrière-petit-fils", "arrière-petite-fille");
-      return `descendant${F_ ? "e" : ""} (${down}e génération)`;
+      if (down === 1) return R_("child");
+      if (down === 2) return R_("gc");
+      if (down === 3) return R_("ggc");
+      return R_("desc", { n: down });
     }
     if (up === 1 && down === 1) {
       // demi-frère/sœur si un seul parent en commun
       const pa = parentsOf(rootId), pb = parentsOf(otherId);
       const common = [pa.father, pa.mother].filter((x) => x && (x === pb.father || x === pb.mother)).length;
-      return (common === 1 ? "demi-" : "") + g("frère", "sœur");
+      return R_("sib", { half: common === 1 });
     }
-    if (up === 1 && down === 2) return g("neveu", "nièce");
-    if (up === 1 && down === 3) return g("petit-neveu", "petite-nièce");
-    if (down === 1 && up === 2) return g("oncle", "tante") + side;
-    if (down === 1 && up === 3) return g("grand-oncle", "grand-tante") + side;
-    if (down === 1 && up === 4) return g("arrière-grand-oncle", "arrière-grand-tante") + side;
-    if (down === 1) return `${g("frère", "sœur")} d'un ancêtre${side} (${up}e génération)`;
-    if (up === down) {
-      const n = up - 1;
-      if (n === 1) return g("cousin germain", "cousine germaine") + side;
-      if (n === 2) return g("cousin issu de germain", "cousine issue de germain") + side;
-      return `${g("cousin", "cousine")} au ${n}e degré${side}`;
-    }
-    if (down === up + 1 && up >= 2) return g("petit-cousin", "petite-cousine") + side;
-    return `${g("parent", "parente")} éloigné${F_ ? "e" : ""}${side}`;
+    if (up === 1 && down === 2) return R_("nephew");
+    if (up === 1 && down === 3) return R_("gnephew");
+    if (down === 1 && up === 2) return R_("uncle");
+    if (down === 1 && up === 3) return R_("guncle");
+    if (down === 1 && up === 4) return R_("gguncle");
+    if (down === 1) return R_("sibAnc", { n: up });
+    if (up === down) return R_("cousin", { n: up - 1 });
+    if (down === up + 1 && up >= 2) return R_("cousinChild");
+    return R_("distant");
   }
   // par alliance
   const spouses = unionsOf(rootId).map((u) => u.spouse).filter(Boolean);
-  if (spouses.includes(otherId)) return g("époux", "épouse");
+  if (spouses.includes(otherId)) return { k: "spouse", f };
   for (const s of spouses) {
     const rs = bloodRelation(s, otherId);
     if (!rs) continue;
-    if (rs.up === 1 && rs.down === 0) return g("beau-père", "belle-mère");
-    if (rs.up === 1 && rs.down === 1) return g("beau-frère", "belle-sœur");
-    if (rs.up === 0 && rs.down === 1) return g("beau-fils", "belle-fille");
-    const rl = relationLabel(s, otherId);
-    if (rl) return `${rl} du conjoint`;
+    if (rs.up === 1 && rs.down === 0) return { k: "parentInLaw", f };
+    if (rs.up === 1 && rs.down === 1) return { k: "sibInLaw", f };
+    if (rs.up === 0 && rs.down === 1) return { k: "stepchild", f };
+    const inner = relationInfo(s, otherId);
+    if (inner) return { k: "ofSpouse", f, inner, spouseF: P(s) && P(s).sex === "F" };
   }
   // conjoint d'un parent de sang
   for (const u of unionsOf(otherId)) {
     if (!u.spouse) continue;
     const rr = bloodRelation(rootId, u.spouse);
     if (!rr) continue;
-    if (rr.up === 0 && rr.down === 1) return g("gendre", "belle-fille");
-    if (rr.up === 1 && rr.down === 1) return g("beau-frère", "belle-sœur");
-    if (rr.up === 1 && rr.down === 0) return g("beau-père", "belle-mère");
-    const rl = relationLabel(rootId, u.spouse);
-    if (rl) return `${g("conjoint", "conjointe")} de ${P(u.spouse).sex === "F" && !/^[aeiouéèh]/i.test(rl) ? "sa" : "son"} ${rl}`;
+    if (rr.up === 0 && rr.down === 1) return { k: "childInLaw", f };
+    if (rr.up === 1 && rr.down === 1) return { k: "sibInLaw", f };
+    if (rr.up === 1 && rr.down === 0) return { k: "stepParent", f };
+    const inner = relationInfo(rootId, u.spouse);
+    if (inner) return { k: "spouseOf", f, inner };
   }
-  return "";
+  return null;
+}
+
+function relationLabel(rootId, otherId) {
+  const info = relationInfo(rootId, otherId);
+  return info ? (REL[LANG] || REL.fr)(info) : "";
 }
 
 /* =====================================================================
    Thème : auto (comme Windows) / clair / sombre
    ===================================================================== */
-const THEME_LABEL = { auto: "Thème : automatique (comme Windows)", light: "Thème : clair", dark: "Thème : sombre" };
+const THEME_LABEL = { get auto() { return t("themeAuto"); }, get light() { return t("themeLight"); }, get dark() { return t("themeDark"); } };
 function applyTheme(mode) {
   const dark = mode === "dark" || (mode === "auto" && window.matchMedia("(prefers-color-scheme: dark)").matches);
   document.documentElement.dataset.theme = dark ? "dark" : "light";
   const b = $("themeBtn");
   b.dataset.mode = mode;
-  b.title = THEME_LABEL[mode] + " — cliquer pour changer";
+  b.title = THEME_LABEL[mode] + " — " + t("clickToChange");
   window.dispatchEvent(new Event("themechange"));
 }
 function setupTheme() {
-  let mode = store.get("theme", "auto");
+  let mode = store.get("theme", "light");
   applyTheme(mode);
   $("themeBtn").onclick = () => {
     mode = { auto: "light", light: "dark", dark: "auto" }[mode] || "auto";
@@ -1313,7 +1315,7 @@ async function heartbeat() {
     if (life.down) { life.down = false; hideBanner(); }
     if (life.version && j.version !== life.version) {
       // l'appli a été mise à jour : on recharge dès que rien n'est en cours de saisie
-      if (state.editing || !$("modal").hidden) toast("Nouvelle version de l'appli : elle s'appliquera après l'enregistrement.");
+      if (state.editing || !$("modal").hidden) toast(t("newVersion"));
       else { location.reload(); return; }
     } else life.version = j.version;
   } catch {
@@ -1325,7 +1327,7 @@ function showBanner() {
   let b = $("downBanner");
   if (!b) {
     b = h("div", { id: "downBanner", class: "down-banner", role: "alert" },
-      "L'appli est arrêtée. Relance-la avec ", h("b", null, "lancer.bat"), " : cette page se reconnectera toute seule.");
+      t("appStopped")[0], h("b", null, "lancer.bat"), t("appStopped")[1]);
     document.body.append(b);
   }
   b.hidden = false;

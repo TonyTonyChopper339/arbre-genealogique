@@ -515,3 +515,8 @@ body.in-map .controls label { display: none; }   /* générations : inutile sur 
 /* bouton thème */
 #themeBtn svg { display: none; }
 #themeBtn[data-mode="auto"] .i-auto, #themeBtn[data-mode="light"] .i-light, #themeBtn[data-mode="dark"] .i-dark { display: block; }
+
+/* frères et sœurs + langue */
+.controls label.check { cursor: pointer; user-select: none; }
+.controls label.check input { accent-color: var(--accent); margin: 0; }
+.controls select.lang { font-weight: 600; font-size: 12px; color: var(--text); cursor: pointer; }
