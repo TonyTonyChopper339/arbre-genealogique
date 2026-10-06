@@ -1,0 +1,333 @@
+{
+ "12/14 place crillon, Avignon": {
+  "lat": 43.9501941,
+  "lon": 4.8029354,
+  "src": "osm"
+ },
+ "4 Pass. de Abbesses Paris, Île-de-France": {
+  "lat": 48.6443057,
+  "lon": 2.7537863,
+  "src": "osm"
+ },
+ "4 passages des abesses, Paris": {
+  "lat": 48.8588897,
+  "lon": 2.320041,
+  "src": "osm"
+ },
+ "9 rue du mont dore, Paris": {
+  "lat": 48.883225,
+  "lon": 2.3229802,
+  "src": "osm"
+ },
+ "Agen, 47001, Lot-et-Garonne, Aquitaine, France": {
+  "lat": 44.201,
+  "lon": 0.6302,
+  "src": "insee"
+ },
+ "Ain Taghrout, 34008, , Bord-Bou-Arréridj, Algérie": {
+  "lat": 36.1443957,
+  "lon": 5.1135708,
+  "src": "osm"
+ },
+ "Budapest": {
+  "lat": 47.481849,
+  "lon": 19.1449053,
+  "src": "osm"
+ },
+ "Budapest IX, paroisse catholique de Ferencváros": null,
+ "Budapest IX, Üllői út": {
+  "lat": 47.4735435,
+  "lon": 19.1043676,
+  "src": "osm"
+ },
+ "Budapest VIII, Lujza utca 14": {
+  "lat": 47.4918101,
+  "lon": 19.0856488,
+  "src": "osm"
+ },
+ "Budapest, Magyarország": {
+  "lat": 47.4978789,
+  "lon": 19.0402383,
+  "src": "osm"
+ },
+ "Budapest, Pest-Pilis-Solt-Kiskun, Hungary": {
+  "lat": 47.481849,
+  "lon": 19.1449053,
+  "src": "osm"
+ },
+ "Budapest, Pest-Pilis-Solt-Kiskun, Magyarország": {
+  "lat": 47.4978789,
+  "lon": 19.0402383,
+  "src": "osm"
+ },
+ "Budapest, Rakoskeresztur": {
+  "lat": 47.4788414,
+  "lon": 19.2462341,
+  "src": "osm"
+ },
+ "Carbonne, 31107, Haute-Garonne, Midi-Pyrénées, France": {
+  "lat": 43.3063,
+  "lon": 1.2321,
+  "src": "insee"
+ },
+ "Dondas, 47082, Lot-et-Garonne, Aquitaine, France": {
+  "lat": 44.2397,
+  "lon": 0.8614,
+  "src": "insee"
+ },
+ "Fargues-Saint-Hilaire, 33165, Gironde, Aquitaine, France": {
+  "lat": 44.8202,
+  "lon": -0.4399,
+  "src": "insee"
+ },
+ "Grandcamp-Maisy, 14312, Calvados, Normandie, France": {
+  "lat": 49.3727,
+  "lon": -1.0515,
+  "src": "insee"
+ },
+ "Guipavas, 29075, Finistère, Bretagne, France": {
+  "lat": 48.4305,
+  "lon": -4.3943,
+  "src": "insee"
+ },
+ "Haboudange": {
+  "lat": 48.8915251,
+  "lon": 6.6128242,
+  "src": "osm"
+ },
+ "Jouars-Pontchartrain, 78321, Yvelines, Ile-de-France, France": {
+  "lat": 48.7874,
+  "lon": 1.913,
+  "src": "insee"
+ },
+ "La Ferté-sur-Chiers, 08168, Ardennes, Champagne-Ardenne, France": {
+  "lat": 49.5733,
+  "lon": 5.233,
+  "src": "insee"
+ },
+ "Lamagistère, 82089, Tarn-et-Garonne, Midi-Pyrénées, France": {
+  "lat": 44.1309,
+  "lon": 0.8228,
+  "src": "insee"
+ },
+ "Lannes, 47134, Lot-et-Garonne, Aquitaine, France": {
+  "lat": 44.0256,
+  "lon": 0.2774,
+  "src": "insee"
+ },
+ "Laspeyres": {
+  "lat": 43.9886187,
+  "lon": 0.2492762,
+  "src": "osm"
+ },
+ "Linden, , , New Jersey, Etats-Unis d'Amérique": {
+  "lat": 40.6220478,
+  "lon": -74.2445902,
+  "src": "osm"
+ },
+ "Léognan, 33238, Gironde, Aquitaine, France": {
+  "lat": 44.7236,
+  "lon": -0.6172,
+  "src": "insee"
+ },
+ "Maisons-Laffitte, 78358, Yvelines, Ile-de-France, France": {
+  "lat": 48.9503,
+  "lon": 2.1533,
+  "src": "insee"
+ },
+ "Maisy, Calvados, France": {
+  "lat": 49.381222,
+  "lon": -1.0556758,
+  "src": "osm"
+ },
+ "Mauriac, 15120, Cantal, Auvergne, France": {
+  "lat": 45.2209,
+  "lon": 2.3209,
+  "src": "insee"
+ },
+ "Meymac, 19136, Corrèze, Limousin, France": {
+  "lat": 45.5527,
+  "lon": 2.1266,
+  "src": "insee"
+ },
+ "Mhère, 58166, Nièvre, Bourgogne, France": {
+  "lat": 47.1946,
+  "lon": 3.8611,
+  "src": "insee"
+ },
+ "Milano, , Milano, Lombardia, Italie": {
+  "lat": 45.4641943,
+  "lon": 9.1896346,
+  "src": "osm"
+ },
+ "Miramont-de-Comminges, 31344, Haute-Garonne, Midi-Pyrénées, France": {
+  "lat": 43.0886,
+  "lon": 0.7586,
+  "src": "insee"
+ },
+ "Moisselles, 95409, Val-d'Oise, Ile-de-France, France": {
+  "lat": 49.0451,
+  "lon": 2.3373,
+  "src": "insee"
+ },
+ "Moncrabeau, 47174, Lot-et-Garonne, Aquitaine, France": {
+  "lat": 44.0473,
+  "lon": 0.3816,
+  "src": "insee"
+ },
+ "Monfréville, 14439, Calvados, Normandie, France": {
+  "lat": 49.3107,
+  "lon": -1.035,
+  "src": "insee"
+ },
+ "Montesquieu-Avantès, 09204, Ariège, Midi-Pyrénées, France": {
+  "lat": 43.0358,
+  "lon": 1.2185,
+  "src": "insee"
+ },
+ "Montluçon, 03185, Allier, Auvergne, France": {
+  "lat": 46.3428,
+  "lon": 2.608,
+  "src": "insee"
+ },
+ "New York, , , New York, Etats-Unis d'Amérique": {
+  "lat": 40.7127281,
+  "lon": -74.0060152,
+  "src": "osm"
+ },
+ "Nérac, 47195, Lot-et-Garonne, Aquitaine, France": {
+  "lat": 44.1339,
+  "lon": 0.347,
+  "src": "insee"
+ },
+ "Paris 3eme": {
+  "lat": 48.8638732,
+  "lon": 2.3617859,
+  "src": "osm"
+ },
+ "Paris, 75010, Paris, Ile-de-France, France": {
+  "lat": 48.8588897,
+  "lon": 2.320041,
+  "src": "osm"
+ },
+ "Paris, 75012, Paris, Ile-de-France, France": {
+  "lat": 48.8588897,
+  "lon": 2.320041,
+  "src": "osm"
+ },
+ "Paris, 75015, Paris, Ile-de-France, France": {
+  "lat": 48.8588897,
+  "lon": 2.320041,
+  "src": "osm"
+ },
+ "Paris, 75018, Paris, Ile-de-France, France": {
+  "lat": 48.8588897,
+  "lon": 2.320041,
+  "src": "osm"
+ },
+ "Paris, 75019, Paris, Ile-de-France, France": {
+  "lat": 48.8588897,
+  "lon": 2.320041,
+  "src": "osm"
+ },
+ "Paris, 75020, Paris, Ile-de-France, France": {
+  "lat": 48.8588897,
+  "lon": 2.320041,
+  "src": "osm"
+ },
+ "Paris, 75056, Paris, Ile-de-France, France": {
+  "lat": 48.8589,
+  "lon": 2.347,
+  "src": "insee"
+ },
+ "Pointis-Inard, 31427, Haute-Garonne, Midi-Pyrénées, France": {
+  "lat": 43.0862,
+  "lon": 0.7949,
+  "src": "insee"
+ },
+ "Rue paul lafarge, Saint-Denis, 93066, Seine-Saint-Denis, Ile-de-France, France": {
+  "lat": 48.9383732,
+  "lon": 2.3627508,
+  "src": "osm"
+ },
+ "Saint-Denis, 93066, Seine-Saint-Denis, Ile-de-France, France": {
+  "lat": 48.9378,
+  "lon": 2.3657,
+  "src": "insee"
+ },
+ "Saint-Jean-de-Thurac, 47248, Lot-et-Garonne, Aquitaine, France": {
+  "lat": 44.1552,
+  "lon": 0.7406,
+  "src": "insee"
+ },
+ "Saint-Pierre-de-Clairac, 47269, Lot-et-Garonne, Aquitaine, France": {
+  "lat": 44.1832,
+  "lon": 0.7512,
+  "src": "insee"
+ },
+ "Saint-Romain-le-Noble, 47274, Lot-et-Garonne, Aquitaine, France": {
+  "lat": 44.1571,
+  "lon": 0.7749,
+  "src": "insee"
+ },
+ "Setif, 19001, , Sétif, Algérie": {
+  "lat": 36.1893494,
+  "lon": 5.4046876,
+  "src": "osm"
+ },
+ "Strasbourg, 67482, Bas-Rhin, Alsace, France": {
+  "lat": 48.5691,
+  "lon": 7.7621,
+  "src": "insee"
+ },
+ "Talence, 33522, Gironde, Aquitaine, France": {
+  "lat": 44.8061,
+  "lon": -0.5918,
+  "src": "insee"
+ },
+ "Terjat, 03280, Allier, Auvergne, France": {
+  "lat": 46.2152,
+  "lon": 2.6191,
+  "src": "insee"
+ },
+ "Toulouse, 31555, Haute-Garonne, Midi-Pyrénées, France": {
+  "lat": 43.6007,
+  "lon": 1.4328,
+  "src": "insee"
+ },
+ "Tours, 37261, Indre-et-Loire, Centre-Val de Loire, France": {
+  "lat": 47.3943,
+  "lon": 0.6949,
+  "src": "insee"
+ },
+ "Trieszt, Autriche": {
+  "lat": 47.59397,
+  "lon": 14.12456,
+  "src": "osm"
+ },
+ "Valennes, 72366, Sarthe, Pays de la Loire, France": {
+  "lat": 48.0036,
+  "lon": 0.8069,
+  "src": "insee"
+ },
+ "Verdun, 55545, Meuse, Lorraine, France": {
+  "lat": 49.144,
+  "lon": 5.3609,
+  "src": "insee"
+ },
+ "Villeneuve-de-Marsan, 40331, Landes, Aquitaine, France": {
+  "lat": 43.9087,
+  "lon": -0.3057,
+  "src": "insee"
+ },
+ "Vitry-sur-Seine, 94081, Val-de-Marne, Ile-de-France, France": {
+  "lat": 48.7893,
+  "lon": 2.3951,
+  "src": "insee"
+ },
+ "Vouilly, 14763, Calvados, Normandie, France": {
+  "lat": 49.3010673,
+  "lon": -1.0542946,
+  "src": "osm"
+ }
+}

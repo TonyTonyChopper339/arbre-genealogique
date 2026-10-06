@@ -1,0 +1,5 @@
+/* Version en ligne : on cache tout ce qui sert à modifier l'arbre */
+.en-ligne #undo, .en-ligne #redo, .en-ligne #newPerson, .en-ligne #export,
+.en-ligne .panel .actions, .en-ligne .panel .chip .x,
+.en-ligne .panel .btn.small, .en-ligne .panel .btn.link,
+.en-ligne .mapctl .ctl-unknown button, .en-ligne [data-move] { display: none !important; }
