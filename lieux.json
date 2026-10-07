@@ -543,5 +543,10 @@
   "lat": 49.676,
   "lon": 13.505,
   "src": "claude"
+ },
+ "Nebílovský Borek, paroisse de Chválenice, district de Plzeň, Bohême (auj. Tchéquie)": {
+  "lat": 49.648,
+  "lon": 13.444,
+  "src": "claude"
  }
 }
