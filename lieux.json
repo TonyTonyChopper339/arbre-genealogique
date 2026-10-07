@@ -588,5 +588,10 @@
   "lat": 50.44,
   "lon": 14.725,
   "src": "claude"
+ },
+ "Podolí (Podol), Bělá pod Bezdězem, Bohême (auj. Tchéquie)": {
+  "lat": 50.497,
+  "lon": 14.817,
+  "src": "claude"
  }
 }
