@@ -548,5 +548,15 @@
   "lat": 49.648,
   "lon": 13.444,
   "src": "claude"
+ },
+ "Šťáhlavice, paroisse de Chválenice, district de Plzeň, Bohême (auj. Tchéquie)": {
+  "lat": 49.66,
+  "lon": 13.525,
+  "src": "claude"
+ },
+ "Žákava, paroisse de Chválenice, district de Plzeň, Bohême (auj. Tchéquie)": {
+  "lat": 49.628,
+  "lon": 13.536,
+  "src": "claude"
  }
 }
