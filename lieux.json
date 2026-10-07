@@ -558,5 +558,35 @@
   "lat": 49.628,
   "lon": 13.536,
   "src": "claude"
+ },
+ "Bělá pod Bezdězem, Bohême (auj. Tchéquie)": {
+  "lat": 50.501,
+  "lon": 14.804,
+  "src": "claude"
+ },
+ "Podmokly (Bodenbach), Děčín, Bohême (auj. Tchéquie)": {
+  "lat": 50.775,
+  "lon": 14.204,
+  "src": "claude"
+ },
+ "Mimoň, Česká Lípa, Bohême (auj. Tchéquie)": {
+  "lat": 50.658,
+  "lon": 14.724,
+  "src": "claude"
+ },
+ "Kuřívody, Bělá pod Bezdězem, Bohême (auj. Tchéquie)": {
+  "lat": 50.585,
+  "lon": 14.802,
+  "src": "claude"
+ },
+ "Doksy (Hirschberg), Bohême (auj. Tchéquie)": {
+  "lat": 50.565,
+  "lon": 14.655,
+  "src": "claude"
+ },
+ "Kluky (Kluk), district de Mladá Boleslav, Bohême (auj. Tchéquie)": {
+  "lat": 50.44,
+  "lon": 14.725,
+  "src": "claude"
  }
 }
