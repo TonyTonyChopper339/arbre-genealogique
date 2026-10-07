@@ -32,7 +32,10 @@
       <input id="search" type="search" placeholder="Rechercher une personne…" autocomplete="off" aria-label="Rechercher une personne" data-i18n-ph="search" data-i18n-aria="search">
       <ul id="results" class="results" hidden></ul>
     </div>
-    <div class="controls">
+    <button id="menuBtn" class="icon-btn menu-btn" title="Options" aria-label="Options" aria-expanded="false" aria-controls="controls" data-i18n-title="menu" data-i18n-aria="menu">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <div class="controls" id="controls">
       <label title="Générations d'ascendants" data-i18n-title="ancestorsTitle"><span data-i18n="ancestors">Ascendants</span>
         <select id="genUp">
           <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option value="99" selected data-i18n="all">Toutes</option>
@@ -81,7 +84,9 @@
       <div id="map"></div>
       <div class="mapctl" id="mapCtl"></div>
       <div class="maplegend" id="mapLegend"></div>
+      <button class="btn mapctl-btn" id="mapCtlBtn" aria-expanded="false" aria-controls="mapCtl" data-i18n="mapFilters">Filtres</button>
     </section>
+    <div class="sheet-grip" id="sheetGrip" role="button" tabindex="0" aria-label="Agrandir ou réduire la fiche" data-i18n-aria="sheetToggle"><span></span></div>
     <aside class="panel" id="panel"></aside>
   </main>
 
@@ -101,5 +106,6 @@
   <script src="i18n.js"></script>
   <script src="app.js"></script>
   <script src="map.js"></script>
+  <script src="mobile.js"></script>
 </body>
 </html>

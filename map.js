@@ -304,9 +304,15 @@ function drawMap(fit) {
   }
   MAP.rootPts = rootPts;
   if (fit === "root" && rootPts.length) {
-    if (rootPts.length === 1) MAP.map.flyTo(rootPts[0], Math.max(MAP.map.getZoom(), 7), { duration: 0.8 });
-    else MAP.map.flyToBounds(rootPts, { padding: [90, 90], maxZoom: 8, duration: 0.8 });
-  } else if (fit && pts.length) MAP.map.fitBounds(pts, { padding: [60, 60], maxZoom: 9 });
+    // sur téléphone, la fiche recouvre le bas de la carte : on en tient compte pour centrer
+    const b = window.sheetInset ? window.sheetInset() : 0;
+    if (rootPts.length === 1 && !b) MAP.map.flyTo(rootPts[0], Math.max(MAP.map.getZoom(), 7), { duration: 0.8 });
+    else if (rootPts.length === 1) MAP.map.flyToBounds([rootPts[0], rootPts[0]], { paddingTopLeft: [40, 40], paddingBottomRight: [40, 40 + b], maxZoom: Math.max(MAP.map.getZoom(), 7), duration: 0.8 });
+    else MAP.map.flyToBounds(rootPts, { paddingTopLeft: b ? [40, 60] : [90, 90], paddingBottomRight: b ? [40, 40 + b] : [90, 90], maxZoom: 8, duration: 0.8 });
+  } else if (fit && pts.length) {
+    const b = window.sheetInset ? window.sheetInset() : 0;
+    MAP.map.fitBounds(pts, { paddingTopLeft: b ? [30, 50] : [60, 60], paddingBottomRight: b ? [30, 30 + b] : [60, 60], maxZoom: 9 });
+  }
   MAP.stats = { persons: set.size, events: events.length, shown: [...byPlace.values()].reduce((s, v) => s + v.length, 0), places: byPlace.size };
   renderControls();
   renderLegend();

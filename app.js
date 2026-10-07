@@ -541,16 +541,24 @@ function applyView(animate) {
   w.style.transform = `translate(${x}px, ${y}px) scale(${k})`;
 }
 
+// partie de l'arbre réellement visible (sur téléphone, la fiche recouvre le bas de l'écran)
+function visibleArea() {
+  const r = $("canvas").getBoundingClientRect();
+  const inset = window.sheetInset ? window.sheetInset() : 0;
+  return { width: r.width, height: Math.max(120, r.height - inset) };
+}
+
 function centerView(animate, fitAll = false) {
   const L = state.layout;
   if (!L) return;
-  const c = $("canvas").getBoundingClientRect();
+  const c = visibleArea();
   const xs = L.cards.map((c) => c.x), ys = L.cards.map((c) => c.y);
   const minX = Math.min(...xs), maxX = Math.max(...L.cards.map((c) => c.x + (c.w || W)));
   const minY = Math.min(...ys), maxY = Math.max(...ys) + H;
   const pad = 40;
   const fit = Math.min((c.width - pad * 2) / (maxX - minX), (c.height - pad * 2) / (maxY - minY));
-  const k = Math.max(fitAll ? 0.15 : 0.85, Math.min(1, fit));
+  // petit écran : on accepte de dézoomer davantage pour voir au moins parents et enfants
+  const k = Math.max(fitAll ? 0.15 : (c.width < 600 ? 0.55 : 0.85), Math.min(1, fit));
   let cx = (minX + maxX) / 2, cy = (minY + maxY) / 2;
   // si tout ne tient pas, on garde la personne centrale visible
   if ((maxX - minX) * k > c.width - pad) cx = L.root.x + W / 2;
@@ -570,22 +578,58 @@ function zoomAt(factor, px, py) {
 
 function setupCanvas() {
   const canvas = $("canvas");
-  let drag = null;
+  const pts = new Map();          // doigts (ou souris) posés sur l'arbre
+  let drag = null, pinch = null;
+  const local = (e) => { const r = canvas.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; };
+  const startPinch = () => {
+    const [a, b] = [...pts.values()];
+    const mid = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+    const v = state.view;
+    pinch = { d0: Math.hypot(a.x - b.x, a.y - b.y) || 1, k0: v.k, wx: (mid.x - v.x) / v.k, wy: (mid.y - v.y) / v.k };
+    if (drag) drag.moved = true;  // pas de « clic » sur une carte après un pincement
+  };
   canvas.addEventListener("pointerdown", (e) => {
-    if (e.button !== 0) return;
-    drag = { sx: e.clientX, sy: e.clientY, x: state.view.x, y: state.view.y, moved: false, id: e.pointerId };
+    if (e.pointerType === "mouse" && e.button !== 0) return;
+    pts.set(e.pointerId, local(e));
+    if (pts.size === 1) {
+      drag = { sx: e.clientX, sy: e.clientY, x: state.view.x, y: state.view.y, moved: false, id: e.pointerId };
+    } else if (pts.size === 2) {
+      startPinch();
+    }
   });
   window.addEventListener("pointermove", (e) => {
+    if (!pts.has(e.pointerId)) return;
+    pts.set(e.pointerId, local(e));
+    if (pinch && pts.size >= 2) {
+      const [a, b] = [...pts.values()];
+      const mid = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+      const k = Math.max(0.15, Math.min(2.2, pinch.k0 * Math.hypot(a.x - b.x, a.y - b.y) / pinch.d0));
+      state.view = { k, x: mid.x - pinch.wx * k, y: mid.y - pinch.wy * k };
+      applyView(false);
+      return;
+    }
     if (!drag || e.pointerId !== drag.id) return;
     const dx = e.clientX - drag.sx, dy = e.clientY - drag.sy;
-    if (!drag.moved && Math.hypot(dx, dy) < 4) return;
+    if (!drag.moved && Math.hypot(dx, dy) < (e.pointerType === "touch" ? 8 : 4)) return;
     if (!drag.moved) { drag.moved = true; canvas.classList.add("dragging"); }
     state.view.x = drag.x + dx;
     state.view.y = drag.y + dy;
     applyView(false);
   });
-  window.addEventListener("pointerup", () => {
-    if (drag && drag.moved) {
+  const end = (e) => {
+    if (!pts.has(e.pointerId)) return;
+    pts.delete(e.pointerId);
+    if (pts.size >= 2) { startPinch(); return; }
+    if (pts.size === 1) {
+      // on lève un doigt après un pincement : on continue à déplacer avec l'autre
+      pinch = null;
+      const [id, p] = [...pts.entries()][0];
+      const r = canvas.getBoundingClientRect();
+      drag = { sx: p.x + r.left, sy: p.y + r.top, x: state.view.x, y: state.view.y, moved: true, id };
+      return;
+    }
+    pinch = null;
+    if (drag && drag.moved && e.type === "pointerup") {
       // empêcher le "click" qui suit un déplacement
       const stop = (ev) => { ev.stopPropagation(); ev.preventDefault(); };
       window.addEventListener("click", stop, { capture: true, once: true });
@@ -593,17 +637,27 @@ function setupCanvas() {
     }
     drag = null;
     canvas.classList.remove("dragging");
-  });
+  };
+  window.addEventListener("pointerup", end);
+  window.addEventListener("pointercancel", end);
   canvas.addEventListener("wheel", (e) => {
     e.preventDefault();
     const r = canvas.getBoundingClientRect();
     zoomAt(Math.exp(-e.deltaY * 0.0015), e.clientX - r.left, e.clientY - r.top);
   }, { passive: false });
-  const mid = () => { const r = canvas.getBoundingClientRect(); return [r.width / 2, r.height / 2]; };
+  const mid = () => { const r = visibleArea(); return [r.width / 2, r.height / 2]; };
   $("zoomIn").onclick = () => zoomAt(1.2, ...mid());
   $("zoomOut").onclick = () => zoomAt(1 / 1.2, ...mid());
   $("recenter").onclick = () => centerView(true, true);
-  window.addEventListener("resize", () => centerView(false));
+  // sur téléphone, la barre d'adresse qui apparaît/disparaît change la hauteur : on ne recentre
+  // que si la largeur change (rotation, fenêtre redimensionnée), pour ne pas perdre sa place
+  let lastW = window.innerWidth, lastH = window.innerHeight;
+  window.addEventListener("resize", () => {
+    const w = window.innerWidth, hh = window.innerHeight;
+    const big = w !== lastW || Math.abs(hh - lastH) > 160;
+    lastW = w; lastH = hh;
+    if (big && !$("canvas").hidden) centerView(false);
+  });
 }
 
 /* =====================================================================

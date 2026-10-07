@@ -251,11 +251,6 @@ select, .field input, .field textarea, .field select {
 }
 .toast.error { background: var(--danger); color: #fff; }
 
-@media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .panel { width: auto; max-width: none; height: 50vh; border-left: none; border-top: 1px solid var(--border); }
-  .controls label { font-size: 12px; }
-}
 .btn.link.danger { color: var(--danger); }
 .modal .form-actions { bottom: 0; padding-bottom: 16px; }
 
@@ -520,3 +515,109 @@ body.in-map .controls label { display: none; }   /* générations : inutile sur 
 .controls label.check { cursor: pointer; user-select: none; }
 .controls label.check input { accent-color: var(--accent); margin: 0; }
 .controls select.lang { font-weight: 600; font-size: 12px; color: var(--text); cursor: pointer; }
+
+/* =================================================================== téléphone */
+.menu-btn, .sheet-grip, .mapctl-btn { display: none; }
+@supports (height: 100dvh) { body { height: 100dvh; } }
+
+@media (max-width: 800px) {
+  /* barre du haut sur une seule ligne : logo, recherche, Arbre/Carte, menu ☰ */
+  .topbar {
+    flex-wrap: nowrap; gap: 8px; padding: 8px 10px;
+    padding-top: max(8px, env(safe-area-inset-top));
+    padding-left: max(10px, env(safe-area-inset-left)); padding-right: max(10px, env(safe-area-inset-right));
+  }
+  .brand { gap: 0; }
+  .brand > span { display: none; }
+  .search { position: static; flex: 1 1 auto; min-width: 0; max-width: none; order: 1; }
+  .search input { font-size: 16px; padding: 8px 10px; }           /* 16 px : pas de zoom automatique sur iPhone */
+  .results { left: 8px; right: 8px; top: calc(100% + 4px); max-height: 55vh; }
+  .results li { padding: 10px 10px; }
+  .viewswitch { order: 2; flex: none; }
+  .viewswitch button { padding: 6px 10px; }
+  .menu-btn { display: inline-grid; order: 3; flex: none; }
+  .controls {
+    display: none; position: absolute; top: 100%; left: 0; right: 0; z-index: 40; margin: 0;
+    flex-direction: column; align-items: stretch; gap: 14px;
+    padding: 14px 16px 16px; background: var(--surface);
+    border-bottom: 1px solid var(--border); box-shadow: 0 12px 28px rgba(0,0,0,.25);
+  }
+  body.menu-open .controls { display: flex; }
+  .controls label { justify-content: space-between; font-size: 15px; color: var(--text); }
+  .controls select { font-size: 16px; min-width: 120px; padding: 8px 10px; }
+  .controls label.check { justify-content: flex-start; gap: 10px; }
+  .controls label.check input { width: 20px; height: 20px; }
+  .controls select.lang { font-size: 16px; }
+  body.in-map .controls label { display: none; }
+
+  /* l'arbre (ou la carte) prend tout l'écran, la fiche glisse par-dessus depuis le bas */
+  .layout { position: relative; --sheet-h: 118px; }
+  .panel {
+    position: absolute; left: 0; right: 0; bottom: 0; z-index: 20;
+    width: auto; max-width: none; height: var(--sheet-h);
+    border-left: none; padding: 0 16px calc(24px + env(safe-area-inset-bottom));
+    overscroll-behavior: contain;
+  }
+  .layout[data-sheet="peek"] .panel { overflow: hidden; }
+  .sheet-grip {
+    display: grid; place-items: center; position: absolute; left: 0; right: 0; z-index: 21;
+    bottom: var(--sheet-h); height: 22px; cursor: grab; touch-action: none;
+    background: var(--surface); border-radius: 16px 16px 0 0;
+    box-shadow: 0 -8px 24px rgba(0,0,0,.18); border-top: 1px solid var(--border);
+  }
+  .sheet-grip span { width: 40px; height: 5px; border-radius: 3px; background: var(--line); }
+  .layout.sheet-anim .panel { transition: height .25s cubic-bezier(.2,.8,.2,1); }
+  .layout.sheet-anim .sheet-grip { transition: bottom .25s cubic-bezier(.2,.8,.2,1); }
+  .hero { margin: 0 -16px 4px; padding: 6px 16px 14px; touch-action: none; cursor: grab; }
+  .hero h1 { font-size: 19px; }
+  .av.big { width: 46px; height: 46px; font-size: 16px; }
+  .layout[data-sheet="full"] .hero { touch-action: auto; }
+
+  /* boutons du zoom : au-dessus de la fiche */
+  .zoom { bottom: calc(var(--sheet-h) + 34px); right: 10px; }
+  .layout.sheet-anim .zoom { transition: bottom .25s cubic-bezier(.2,.8,.2,1); }
+
+  /* carte : filtres derrière un bouton, légende repliée, contrôles Leaflet au-dessus de la fiche */
+  .mapctl { display: none; top: 56px; left: 10px; right: 10px; width: auto; max-height: calc(100% - var(--sheet-h) - 100px); }
+  .mapctl.open { display: block; }
+  .mapctl-btn {
+    display: inline-flex; position: absolute; top: 10px; left: 10px; z-index: 501;
+    box-shadow: var(--shadow); background: var(--surface);
+  }
+  .mapctl-btn[aria-expanded="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+  .maplegend { left: 10px; bottom: calc(var(--sheet-h) + 34px); cursor: pointer; padding: 8px 10px; }
+  .maplegend .lg-title { margin: 0; }
+  .maplegend .lg-title::after { content: " ▸"; }
+  .maplegend.open .lg-title { margin-bottom: 4px; }
+  .maplegend.open .lg-title::after { content: " ▾"; }
+  .maplegend:not(.open) .lg-row { display: none; }
+  .leaflet-bottom { bottom: calc(var(--sheet-h) + 22px); }
+  .leaflet-top.leaflet-right { top: 0; }
+  .layout.sheet-anim .maplegend, .layout.sheet-anim .leaflet-bottom { transition: bottom .25s cubic-bezier(.2,.8,.2,1); }
+
+  /* fiches : boutons et puces faciles à toucher */
+  .chip { padding: 5px 6px 5px 11px; font-size: 14px; }
+  .chip .x { width: 28px; height: 28px; }
+  .panel .btn { padding: 9px 14px; }
+  .ev .src { word-break: break-word; }
+
+  /* fenêtres (ajout, modification) : plein écran par le bas */
+  .modal-backdrop { padding: 0; place-items: end stretch; }
+  .modal { width: 100%; max-height: 92dvh; border-radius: 16px 16px 0 0; }
+  .field input, .field textarea, .field select { font-size: 16px; }
+
+  .toast { bottom: calc(var(--sheet-h, 0px) + 40px); }
+  .down-banner { top: 60px; width: calc(100% - 24px); text-align: center; }
+}
+
+/* écrans tactiles : pas d'effet de survol qui reste « collé », cibles plus grandes */
+@media (hover: none) {
+  .card:hover, .card.M:hover, .card.F:hover { transform: none; }
+  :root[data-theme="light"] .card:hover { box-shadow: 0 4px 14px rgba(40, 35, 25, .08); }
+  :root[data-theme="dark"] .card:hover { box-shadow: 0 6px 18px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.06); }
+}
+@media (pointer: coarse) {
+  .icon-btn { width: 40px; height: 40px; }
+  .zoom #zoomIn, .zoom #zoomOut { display: none; }   /* on zoome avec deux doigts */
+}
+@media (max-width: 800px) { .mapctl.open ~ .maplegend { display: none; } }
