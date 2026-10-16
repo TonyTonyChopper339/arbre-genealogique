@@ -603,5 +603,25 @@
   "lat": 49.628,
   "lon": 13.536,
   "src": "claude"
+ },
+ "Hradčany (Kummer) n° 37, paroisse de Mimoň, Bohême (auj. Tchéquie)": {
+  "lat": 50.616,
+  "lon": 14.703,
+  "src": "claude"
+ },
+ "Hradčany (Kummer), Bohême": {
+  "lat": 50.616,
+  "lon": 14.703,
+  "src": "claude"
+ },
+ "Planiny (Planin) n° 12, maison forestière près de Nebílovský Borek, paroisse de Chválenice, district de Rokycany, Bohême (auj. Tchéquie)": {
+  "lat": 49.625,
+  "lon": 13.45,
+  "src": "claude"
+ },
+ "Mnichovo Hradiště, Bohême (auj. Tchéquie)": {
+  "lat": 50.527,
+  "lon": 14.971,
+  "src": "claude"
  }
 }
