@@ -24,14 +24,49 @@
   "lon": 0.6302,
   "src": "insee"
  },
+ "Agen, 47001, Lot-et-Garonne, Aquitaine, France (?)": {
+  "lat": 44.201,
+  "lon": 0.6302,
+  "src": "claude"
+ },
  "Ain Taghrout, 34008, , Bord-Bou-Arréridj, Algérie": {
   "lat": 36.1443957,
   "lon": 5.1135708,
   "src": "osm"
  },
+ "Archignat, 03005, Allier, Auvergne, France": {
+  "lat": 46.3634,
+  "lon": 2.4102,
+  "src": "claude"
+ },
+ "Argenty, Teillet-Argenty, 03279, Allier, Auvergne, France": {
+  "lat": 46.2644,
+  "lon": 2.5186,
+  "src": "claude"
+ },
+ "Asperg, Markgröninger Straße 2, Kreis Ludwigsburg, Allemagne": {
+  "lat": 48.9059,
+  "lon": 9.1351,
+  "src": "claude"
+ },
+ "Auge, Teillet-Argenty, 03279, Allier, Auvergne, France": {
+  "lat": 46.2644,
+  "lon": 2.5186,
+  "src": "claude"
+ },
+ "Bakov nad Jizerou (au bord de la Jizera), Bohême (auj. Tchéquie)": {
+  "lat": 50.4801,
+  "lon": 14.9388,
+  "src": "claude"
+ },
  "Bakov nad Jizerou, Bohême (auj. Tchéquie)": {
   "lat": 50.4823,
   "lon": 14.9415,
+  "src": "claude"
+ },
+ "Bezděz (Großbösig), Bohême (auj. Tchéquie)": {
+  "lat": 50.538,
+  "lon": 14.72,
   "src": "claude"
  },
  "Bicske, Fejér, Hongrie": {
@@ -44,9 +79,59 @@
   "lon": 21.8364,
   "src": "claude"
  },
+ "Borossebes (Boros-Sebes) n° 362, Arad, Hongrie (auj. Sebiș, Roumanie)": {
+  "lat": 46.3734,
+  "lon": 22.13,
+  "src": "claude"
+ },
+ "Borossebes et Menyháza (Arad)": {
+  "lat": 46.3734,
+  "lon": 22.13,
+  "src": "claude"
+ },
+ "Boudou, 82019, Tarn-et-Garonne, Midi-Pyrénées, France": {
+  "lat": 44.1058,
+  "lon": 1.0189,
+  "src": "claude"
+ },
+ "Bounet (?), paroisse de Saint-Sulpice": {
+  "lat": 44.1823,
+  "lon": 1.141,
+  "src": "claude"
+ },
+ "Bourg de Bellefaye, Nouhant, 23145, Creuse, Limousin, France": {
+  "lat": 46.2924,
+  "lon": 2.3901,
+  "src": "claude"
+ },
+ "Brunenc (?), Goudourville, 82073, Tarn-et-Garonne, Midi-Pyrénées, France": {
+  "lat": 44.113,
+  "lon": 0.9304,
+  "src": "claude"
+ },
+ "Bruneng (?), Goudourville, 82073, Tarn-et-Garonne, Midi-Pyrénées, France": {
+  "lat": 44.113,
+  "lon": 0.9304,
+  "src": "claude"
+ },
+ "Bruneng, Goudourville, 82073, Tarn-et-Garonne, Midi-Pyrénées, France": {
+  "lat": 44.113,
+  "lon": 0.9304,
+  "src": "claude"
+ },
+ "Brňany n° 52, district de Litoměřice, Bohême (auj. Tchéquie)": {
+  "lat": 50.481,
+  "lon": 14.1419,
+  "src": "claude"
+ },
  "Budapest": {
   "lat": 47.4979,
   "lon": 19.0402,
+  "src": "claude"
+ },
+ "Budapest III (Óbuda)": {
+  "lat": 47.5385,
+  "lon": 19.0397,
   "src": "claude"
  },
  "Budapest III, Laktanya utca 11": {
@@ -124,6 +209,11 @@
   "lon": 19.072,
   "src": "claude"
  },
+ "Budapest, Hongrie": {
+  "lat": 47.4979,
+  "lon": 19.0402,
+  "src": "claude"
+ },
  "Budapest, István út 30/c": {
   "lat": 47.5062,
   "lon": 19.0785,
@@ -149,9 +239,54 @@
   "lon": 19.2462341,
   "src": "osm"
  },
+ "Buteni (Körösbökény), comté d’Arad, Hongrie (auj. Roumanie)": {
+  "lat": 46.3309,
+  "lon": 22.1191,
+  "src": "claude"
+ },
+ "Buteni, Menyháza, Ferdinandsberg": {
+  "lat": 46.3309,
+  "lon": 22.1191,
+  "src": "claude"
+ },
+ "Bélâbre, 36016, Indre, Centre-Val de Loire, France": {
+  "lat": 46.5501,
+  "lon": 1.1757,
+  "src": "claude"
+ },
+ "Bílá Hlína n° 24, district de Mnichovo Hradiště, Bohême (auj. Tchéquie)": {
+  "lat": 50.5326,
+  "lon": 14.9252,
+  "src": "claude"
+ },
+ "Bělá pod Bezdězem (Weißwasser), Bohême": {
+  "lat": 50.5015,
+  "lon": 14.8041,
+  "src": "claude"
+ },
+ "Bělá pod Bezdězem n° 43, Bohême (auj. Tchéquie)": {
+  "lat": 50.5015,
+  "lon": 14.8041,
+  "src": "claude"
+ },
+ "Bělá pod Bezdězem, Bohême": {
+  "lat": 50.5015,
+  "lon": 14.8041,
+  "src": "claude"
+ },
  "Bělá pod Bezdězem, Bohême (auj. Tchéquie)": {
   "lat": 50.501,
   "lon": 14.804,
+  "src": "claude"
+ },
+ "Calvary Catholic Cemetery, Evanston, Cook, Illinois, États-Unis": {
+  "lat": 42.0248,
+  "lon": -87.6719,
+  "src": "claude"
+ },
+ "Caransebeș (Karánsebes), Banat": {
+  "lat": 45.4106,
+  "lon": 22.2182,
   "src": "claude"
  },
  "Carbonne, 31107, Haute-Garonne, Midi-Pyrénées, France": {
@@ -159,9 +294,114 @@
   "lon": 1.2321,
   "src": "insee"
  },
+ "Carelnaut (?), Goudourville, 82073, Tarn-et-Garonne, Midi-Pyrénées, France": {
+  "lat": 44.113,
+  "lon": 0.9304,
+  "src": "claude"
+ },
+ "Carelnaut (?), Saint-Julien-de-Goudourville (paroisse), Goudourville, 82073, Tarn-et-Garonne, Midi-Pyrénées, France": {
+  "lat": 44.113,
+  "lon": 0.9304,
+  "src": "claude"
+ },
+ "Cazes-Mondenard, 82042, Tarn-et-Garonne, Midi-Pyrénées, France": {
+  "lat": 44.2114,
+  "lon": 1.219,
+  "src": "claude"
+ },
+ "Cerisy-la-Forêt, 50110, Manche, Normandie, France": {
+  "lat": 49.1937,
+  "lon": -0.937,
+  "src": "claude"
+ },
+ "Chalais, 36036, Indre, Centre-Val de Loire, France": {
+  "lat": 46.5389,
+  "lon": 1.2259,
+  "src": "claude"
+ },
+ "Chraštice, district de Mirovice, Bohême (auj. Tchéquie)": {
+  "lat": 49.5773,
+  "lon": 14.0721,
+  "src": "claude"
+ },
+ "Château de Saint-Paul, Durfort-Lacapelette, 82051, Tarn-et-Garonne, Midi-Pyrénées, France": {
+  "lat": 44.1823,
+  "lon": 1.141,
+  "src": "claude"
+ },
+ "Cimetière de Litoměřice, Bohême (auj. Tchéquie)": {
+  "lat": 50.5337,
+  "lon": 14.1182,
+  "src": "claude"
+ },
+ "Ciron, 36053, Indre, Centre-Val de Loire, France": {
+  "lat": 46.6252,
+  "lon": 1.2721,
+  "src": "claude"
+ },
+ "Clermont (?), Clermont-Dessous, 47066, Lot-et-Garonne, Aquitaine, France": {
+  "lat": 44.2502,
+  "lon": 0.4534,
+  "src": "claude"
+ },
+ "Clermont-Dessous (?), 47066, Lot-et-Garonne, Aquitaine, France": {
+  "lat": 44.2502,
+  "lon": 0.4534,
+  "src": "claude"
+ },
+ "Cochet, Ciron, 36053, Indre, Centre-Val de Loire, France": {
+  "lat": 46.6188,
+  "lon": 1.2684,
+  "src": "claude"
+ },
+ "Cochet, Oulches, 36148, Indre, Centre-Val de Loire, France": {
+  "lat": 46.6188,
+  "lon": 1.2684,
+  "src": "claude"
+ },
+ "Concremiers, 36058, Indre, Centre-Val de Loire, France": {
+  "lat": 46.5934,
+  "lon": 1.0194,
+  "src": "claude"
+ },
+ "Corbeil-Essonnes, 91174, Essonne, Ile-de-France, France": {
+  "lat": 48.5973,
+  "lon": 2.4646,
+  "src": "claude"
+ },
+ "Cour d'appel de Paris (8e chambre)": {
+  "lat": 48.8556,
+  "lon": 2.345,
+  "src": "claude"
+ },
  "Doksy (Hirschberg), Bohême (auj. Tchéquie)": {
   "lat": 50.565,
   "lon": 14.655,
+  "src": "claude"
+ },
+ "Dolní Krupá (Niedergruppai) n° 63, district de Mladá Boleslav, Bohême (auj. Tchéquie)": {
+  "lat": 50.5463,
+  "lon": 14.8672,
+  "src": "claude"
+ },
+ "Dolní Krupá n° 63, Bohême": {
+  "lat": 50.5463,
+  "lon": 14.8672,
+  "src": "claude"
+ },
+ "Dolní Krupá, Bohême": {
+  "lat": 50.5463,
+  "lon": 14.8672,
+  "src": "claude"
+ },
+ "Dolní Ostrovec n° 25, district de Písek, Bohême (auj. Tchéquie)": {
+  "lat": 49.4155,
+  "lon": 14.1086,
+  "src": "claude"
+ },
+ "Domérat, 03101, Allier, Auvergne, France": {
+  "lat": 46.3706,
+  "lon": 2.5462,
   "src": "claude"
  },
  "Dondas, 47082, Lot-et-Garonne, Aquitaine, France": {
@@ -169,9 +409,19 @@
   "lon": 0.8614,
   "src": "insee"
  },
+ "Durfort-Lacapelette, 82051, Tarn-et-Garonne, Midi-Pyrénées, France": {
+  "lat": 44.1823,
+  "lon": 1.141,
+  "src": "claude"
+ },
  "Erzsébetfalva (auj. Budapest XX, Pesterzsébet), Török Flóris utca 30": {
   "lat": 47.436,
   "lon": 19.105,
+  "src": "claude"
+ },
+ "Evanston, Cook, Illinois, États-Unis": {
+  "lat": 42.047,
+  "lon": -87.6846,
   "src": "claude"
  },
  "Fargues-Saint-Hilaire, 33165, Gironde, Aquitaine, France": {
@@ -179,9 +429,59 @@
   "lon": -0.4399,
   "src": "insee"
  },
+ "Ferdinandsberg (Nándorhegy), Krassó-Szörény, Hongrie (auj. Oțelu Roșu, Roumanie)": {
+  "lat": 45.5198,
+  "lon": 22.3577,
+  "src": "claude"
+ },
  "Ferdinandsberg (Nándorhegy), comté de Krassó-Szörény, Hongrie (auj. Oțelu Roșu, Roumanie)": {
   "lat": 45.5167,
   "lon": 22.3667,
+  "src": "claude"
+ },
+ "Fichtenbach": {
+  "lat": 49.335,
+  "lon": 12.84,
+  "src": "claude"
+ },
+ "Fichtenbach (Fuchsova Huť) n° 17, paroisse de Horní Folmava (Ober-Vollmau), district de Domažlice, Bohême (auj. Tchéquie)": {
+  "lat": 49.335,
+  "lon": 12.84,
+  "src": "claude"
+ },
+ "Fichtenbach (Fuchsova Huť), paroisse de Horní Folmava": {
+  "lat": 49.335,
+  "lon": 12.84,
+  "src": "claude"
+ },
+ "Fichtenbach (Fuchsova Huť), paroisse de Horní Folmava, district de Domažlice, Bohême (auj. Tchéquie)": {
+  "lat": 49.335,
+  "lon": 12.84,
+  "src": "claude"
+ },
+ "Fichtenbach (Fuchsova Huť), paroisse de Horní Folmava, district de Domažlice, Bohême (auj. Tchéquie) n° 17": {
+  "lat": 49.335,
+  "lon": 12.84,
+  "src": "claude"
+ },
+ "Fleuraget, Saint-Loup, 23209, Creuse, Limousin, France": {
+  "lat": 46.1471,
+  "lon": 2.2827,
+  "src": "claude"
+ },
+ "Frontenat, Archignat, 03005, Allier, Auvergne, France": {
+  "lat": 46.3634,
+  "lon": 2.4102,
+  "src": "claude"
+ },
+ "Golfech, 82072, Tarn-et-Garonne, Midi-Pyrénées, France": {
+  "lat": 44.1105,
+  "lon": 0.8572,
+  "src": "claude"
+ },
+ "Goudourville, 82073, Tarn-et-Garonne, Midi-Pyrénées, France": {
+  "lat": 44.113,
+  "lon": 0.9304,
   "src": "claude"
  },
  "Grandcamp-Maisy, 14312, Calvados, Normandie, France": {
@@ -194,19 +494,69 @@
   "lon": -4.3943,
   "src": "insee"
  },
+ "Guéret, 23096, Creuse, Nouvelle-Aquitaine, France": {
+  "lat": 46.1585,
+  "lon": 1.8705,
+  "src": "claude"
+ },
  "Haboudange": {
   "lat": 48.8915251,
   "lon": 6.6128242,
   "src": "osm"
+ },
+ "Hradčany (Kummer) n° 37, paroisse de Mimoň, Bohême (auj. Tchéquie)": {
+  "lat": 50.616,
+  "lon": 14.703,
+  "src": "claude"
+ },
+ "Hradčany (Kummer), Bohême": {
+  "lat": 50.616,
+  "lon": 14.703,
+  "src": "claude"
+ },
+ "Hradčany (Kummer), paroisse de Mimoň, Bohême (auj. Tchéquie)": {
+  "lat": 50.616,
+  "lon": 14.703,
+  "src": "claude"
+ },
+ "Huttenheim, 67216, Bas-Rhin, Grand Est, France": {
+  "lat": 48.3497,
+  "lon": 7.5703,
+  "src": "claude"
+ },
+ "Hôpital militaire (vojenská nemocnice), Litoměřice, Bohême (auj. Tchéquie)": {
+  "lat": 50.5341,
+  "lon": 14.13,
+  "src": "claude"
+ },
+ "Isigny-sur-Mer, 14342, Calvados, Normandie, France": {
+  "lat": 49.2852,
+  "lon": -1.057,
+  "src": "claude"
+ },
+ "Jordy, Saint-Paul-d'Elburgues (paroisse), Durfort-Lacapelette, 82051, Tarn-et-Garonne, Midi-Pyrénées, France": {
+  "lat": 44.1823,
+  "lon": 1.141,
+  "src": "claude"
  },
  "Jouars-Pontchartrain, 78321, Yvelines, Ile-de-France, France": {
   "lat": 48.7874,
   "lon": 1.913,
   "src": "insee"
  },
+ "Jägerhaus Neubrück(e) (Nový Most) n° 43, village de Kummer (Hradčany, auj. Ralsko), domaine de Hirschberg, paroisse de Mimoň, Bohême": {
+  "lat": 50.631,
+  "lon": 14.7183,
+  "src": "claude"
+ },
  "Kamínky (Nevid), paroisse de Mirošov, Bohême (auj. Tchéquie)": {
   "lat": 49.699,
   "lon": 13.602,
+  "src": "claude"
+ },
+ "Klokočka, Mnichovo Hradiště, Bohême (auj. Tchéquie)": {
+  "lat": 50.523,
+  "lon": 14.9741,
   "src": "claude"
  },
  "Kluky (Kluk), district de Mladá Boleslav, Bohême (auj. Tchéquie)": {
@@ -224,9 +574,39 @@
   "lon": 23.6236,
   "src": "claude"
  },
+ "Konest (Kőnest), domaine de Borossebes, comitat d'Arad, Hongrie": {
+  "lat": 46.3734,
+  "lon": 22.13,
+  "src": "claude"
+ },
  "Kuřívody, Bělá pod Bezdězem, Bohême (auj. Tchéquie)": {
   "lat": 50.585,
   "lon": 14.802,
+  "src": "claude"
+ },
+ "La Cascoulèse (?), Cazes-Mondenard, 82042, Tarn-et-Garonne, Midi-Pyrénées, France": {
+  "lat": 44.2114,
+  "lon": 1.219,
+  "src": "claude"
+ },
+ "La Cascoulèse, section de Martissan, Cazes-Mondenard, 82042, Tarn-et-Garonne, Midi-Pyrénées, France": {
+  "lat": 44.2114,
+  "lon": 1.219,
+  "src": "claude"
+ },
+ "La Catoune, Saint-Paul-d'Elburgues (paroisse), Durfort-Lacapelette, 82051, Tarn-et-Garonne, Midi-Pyrénées, France": {
+  "lat": 44.1823,
+  "lon": 1.141,
+  "src": "claude"
+ },
+ "La Chaumette, Nouhant, 23145, Creuse, Limousin, France": {
+  "lat": 46.2924,
+  "lon": 2.3901,
+  "src": "claude"
+ },
+ "La Collancelle, 58080, Nièvre, Bourgogne, France": {
+  "lat": 47.1779,
+  "lon": 3.6453,
   "src": "claude"
  },
  "La Ferté-sur-Chiers, 08168, Ardennes, Champagne-Ardenne, France": {
@@ -234,15 +614,60 @@
   "lon": 5.233,
   "src": "insee"
  },
+ "La Haye-du-Puits, La Haye, 50236, Manche, Normandie, France": {
+  "lat": 49.2911,
+  "lon": -1.5451,
+  "src": "claude"
+ },
+ "La Tuque (?), Saint-Julien-de-Goudourville (paroisse), Goudourville, 82073, Tarn-et-Garonne, Midi-Pyrénées, France": {
+  "lat": 44.113,
+  "lon": 0.9304,
+  "src": "claude"
+ },
+ "Labro (?), Clermont-Dessous, 47066, Lot-et-Garonne, Aquitaine, France": {
+  "lat": 44.2502,
+  "lon": 0.4534,
+  "src": "claude"
+ },
+ "Lacaud, Nouhant, 23145, Creuse, Limousin, France": {
+  "lat": 46.2924,
+  "lon": 2.3901,
+  "src": "claude"
+ },
+ "Lacoux (Lascoux), Nouhant, 23145, Creuse, Limousin, France": {
+  "lat": 46.2924,
+  "lon": 2.3901,
+  "src": "claude"
+ },
+ "Lafrançaise, 82087, Tarn-et-Garonne, Midi-Pyrénées, France": {
+  "lat": 44.1319,
+  "lon": 1.2375,
+  "src": "claude"
+ },
  "Lamagistère, 82089, Tarn-et-Garonne, Midi-Pyrénées, France": {
   "lat": 44.1309,
   "lon": 0.8228,
   "src": "insee"
  },
+ "Lamaids, 03136, Allier, Auvergne, France": {
+  "lat": 46.302,
+  "lon": 2.441,
+  "src": "claude"
+ },
  "Lannes, 47134, Lot-et-Garonne, Aquitaine, France": {
   "lat": 44.0256,
   "lon": 0.2774,
   "src": "insee"
+ },
+ "Lascoux (Lacaud), Nouhant, 23145, Creuse, Limousin, France": {
+  "lat": 46.2924,
+  "lon": 2.3901,
+  "src": "claude"
+ },
+ "Lascoux, Nouhant, 23145, Creuse, Limousin, France": {
+  "lat": 46.2924,
+  "lon": 2.3901,
+  "src": "claude"
  },
  "Laspeyres": {
   "lat": 43.9886187,
@@ -254,15 +679,70 @@
   "lon": 9.37,
   "src": "claude"
  },
+ "Lavaure, Teillet-Argenty, 03279, Allier, Auvergne, France": {
+  "lat": 46.2644,
+  "lon": 2.5186,
+  "src": "claude"
+ },
+ "Le Blanc, 36018, Indre, Centre-Val de Loire, France": {
+  "lat": 46.6351,
+  "lon": 1.0955,
+  "src": "claude"
+ },
+ "Le Clos, Nouhant, 23145, Creuse, Limousin, France": {
+  "lat": 46.2924,
+  "lon": 2.3901,
+  "src": "claude"
+ },
+ "Le Mousseau (?), Terjat, 03280, Allier, Auvergne, France": {
+  "lat": 46.2152,
+  "lon": 2.6191,
+  "src": "claude"
+ },
+ "Leitmeritz (Litoměřice), Bohême (auj. Tchéquie)": {
+  "lat": 50.5341,
+  "lon": 14.13,
+  "src": "claude"
+ },
  "Linden, , , New Jersey, Etats-Unis d'Amérique": {
   "lat": 40.6220478,
   "lon": -74.2445902,
   "src": "osm"
  },
+ "Litoměřice, Bohême (auj. Tchéquie)": {
+  "lat": 50.5341,
+  "lon": 14.13,
+  "src": "claude"
+ },
+ "Loudun, 86137, Vienne, Nouvelle-Aquitaine, France": {
+  "lat": 47.0116,
+  "lon": 0.1048,
+  "src": "claude"
+ },
+ "Lussat, 23114, Creuse, Limousin, France": {
+  "lat": 46.1881,
+  "lon": 2.3284,
+  "src": "claude"
+ },
  "Léognan, 33238, Gironde, Aquitaine, France": {
   "lat": 44.7236,
   "lon": -0.6172,
   "src": "insee"
+ },
+ "Mairie du 17e arrondissement, Paris": {
+  "lat": 48.8846,
+  "lon": 2.3215,
+  "src": "claude"
+ },
+ "Maison forestière de Radechov (Dolní Krupá), Bohême": {
+  "lat": 50.5463,
+  "lon": 14.8672,
+  "src": "claude"
+ },
+ "Maisons-Laffitte, 18 bis rue de la Muette, 78358, Yvelines, Ile-de-France, France": {
+  "lat": 48.9503,
+  "lon": 2.1533,
+  "src": "claude"
  },
  "Maisons-Laffitte, 78358, Yvelines, Ile-de-France, France": {
   "lat": 48.9503,
@@ -274,15 +754,50 @@
   "lon": -1.0556758,
   "src": "osm"
  },
+ "Maisy, Grandcamp-Maisy, 14312, Calvados, Normandie, France": {
+  "lat": 49.3812,
+  "lon": -1.0557,
+  "src": "claude"
+ },
+ "Malá Bělá n° 13, Bakov nad Jizerou, Bohême (auj. Tchéquie)": {
+  "lat": 50.4863,
+  "lon": 14.9238,
+  "src": "claude"
+ },
+ "Malá Bělá n° 30, Bakov nad Jizerou, Bohême (auj. Tchéquie)": {
+  "lat": 50.4863,
+  "lon": 14.9238,
+  "src": "claude"
+ },
  "Malá Bělá, Bakov nad Jizerou, Bohême (auj. Tchéquie)": {
   "lat": 50.498,
   "lon": 14.934,
+  "src": "claude"
+ },
+ "Marchésieux, 50289, Manche, Normandie, France": {
+  "lat": 49.1887,
+  "lon": -1.2903,
   "src": "claude"
  },
  "Mauriac, 15120, Cantal, Auvergne, France": {
   "lat": 45.2209,
   "lon": 2.3209,
   "src": "insee"
+ },
+ "Menyháza (Monyásza)": {
+  "lat": 46.4636,
+  "lon": 22.292,
+  "src": "claude"
+ },
+ "Menyháza (Monyásza), Arad, Hongrie (auj. Moneasa, Roumanie)": {
+  "lat": 46.4636,
+  "lon": 22.292,
+  "src": "claude"
+ },
+ "Menyháza n° 51, Arad, Hongrie (auj. Moneasa, Roumanie)": {
+  "lat": 46.4636,
+  "lon": 22.292,
+  "src": "claude"
  },
  "Menyháza, Arad, Hongrie (auj. Moneasa, Roumanie)": {
   "lat": 46.455,
@@ -298,6 +813,21 @@
   "lat": 47.1946,
   "lon": 3.8611,
   "src": "insee"
+ },
+ "Michelou, Lamagistère, 82089, Tarn-et-Garonne, Midi-Pyrénées, France": {
+  "lat": 44.1309,
+  "lon": 0.8228,
+  "src": "claude"
+ },
+ "Milan, Lombardie, Italie": {
+  "lat": 45.4642,
+  "lon": 9.1896,
+  "src": "claude"
+ },
+ "Milan, puis Gênes et Sestri Levante, Ligurie, Italie": {
+  "lat": 45.4642,
+  "lon": 9.1896,
+  "src": "claude"
  },
  "Milano, , Milano, Lombardia, Italie": {
   "lat": 45.4641943,
@@ -329,6 +859,26 @@
   "lon": 13.6587,
   "src": "claude"
  },
+ "Mladá Boleslav, Bohême (auj. Tchéquie)": {
+  "lat": 50.4116,
+  "lon": 14.9031,
+  "src": "claude"
+ },
+ "Mnichovo Hradiště n° 45, Bohême (auj. Tchéquie)": {
+  "lat": 50.523,
+  "lon": 14.9741,
+  "src": "claude"
+ },
+ "Mnichovo Hradiště, Bohême (auj. Tchéquie)": {
+  "lat": 50.527,
+  "lon": 14.971,
+  "src": "claude"
+ },
+ "Moissac, 82112, Tarn-et-Garonne, Midi-Pyrénées, France": {
+  "lat": 44.1219,
+  "lon": 1.1002,
+  "src": "claude"
+ },
  "Moisselles, 95409, Val-d'Oise, Ile-de-France, France": {
   "lat": 49.0451,
   "lon": 2.3373,
@@ -349,10 +899,25 @@
   "lon": 1.2185,
   "src": "insee"
  },
+ "Montesquieu-Volvestre, 31375, Haute-Garonne, Midi-Pyrénées, France": {
+  "lat": 43.1778,
+  "lon": 1.2184,
+  "src": "claude"
+ },
  "Montluçon, 03185, Allier, Auvergne, France": {
   "lat": 46.3428,
   "lon": 2.608,
   "src": "insee"
+ },
+ "Mothes (?), Cazes-Mondenard, 82042, Tarn-et-Garonne, Midi-Pyrénées, France": {
+  "lat": 44.2114,
+  "lon": 1.219,
+  "src": "claude"
+ },
+ "Munich-Riem, Allemagne → New York, États-Unis": {
+  "lat": 48.144,
+  "lon": 11.6778,
+  "src": "claude"
  },
  "Nebílovský Borek, paroisse de Chválenice, district de Plzeň, Bohême (auj. Tchéquie)": {
   "lat": 49.648,
@@ -364,14 +929,49 @@
   "lon": -74.0060152,
   "src": "osm"
  },
+ "New York, New York, États-Unis": {
+  "lat": 40.7127,
+  "lon": -74.006,
+  "src": "claude"
+ },
+ "Nonancourt, 27438, Eure, Normandie, France": {
+  "lat": 48.7775,
+  "lon": 1.1907,
+  "src": "claude"
+ },
+ "Nouhant, 23145, Creuse, Limousin, France": {
+  "lat": 46.2924,
+  "lon": 2.3901,
+  "src": "claude"
+ },
+ "Náchod (?), Bohême (auj. Tchéquie)": {
+  "lat": 50.4167,
+  "lon": 16.1623,
+  "src": "claude"
+ },
+ "Náchod, Bohême (auj. Tchéquie)": {
+  "lat": 50.4167,
+  "lon": 16.1623,
+  "src": "claude"
+ },
  "Nérac, 47195, Lot-et-Garonne, Aquitaine, France": {
   "lat": 44.1339,
   "lon": 0.347,
   "src": "insee"
  },
+ "Oulches, 36148, Indre, Centre-Val de Loire, France": {
+  "lat": 46.6036,
+  "lon": 1.3119,
+  "src": "claude"
+ },
  "Paris 15e": {
   "lat": 48.8421,
   "lon": 2.2999,
+  "src": "claude"
+ },
+ "Paris 17e, 43 rue La Condamine, 75117, Paris, Ile-de-France, France": {
+  "lat": 48.8874,
+  "lon": 2.305,
   "src": "claude"
  },
  "Paris 17e, 9 rue du Mont-Dore": {
@@ -419,6 +1019,26 @@
   "lon": 2.347,
   "src": "insee"
  },
+ "Paris, 75118, Paris, Ile-de-France, France": {
+  "lat": 48.8919,
+  "lon": 2.3487,
+  "src": "claude"
+ },
+ "Paris, 75119, Paris, Ile-de-France, France": {
+  "lat": 48.8871,
+  "lon": 2.3878,
+  "src": "claude"
+ },
+ "Planin (Planiny), maison forestière près de Nebílovský Borek, paroisse de Chválenice, Bohême (lieu d'origine déclaré)": {
+  "lat": 49.6481,
+  "lon": 13.4442,
+  "src": "claude"
+ },
+ "Planiny (Planin) n° 12, maison forestière près de Nebílovský Borek, paroisse de Chválenice, district de Rokycany, Bohême (auj. Tchéquie)": {
+  "lat": 49.625,
+  "lon": 13.45,
+  "src": "claude"
+ },
  "Podmokly (Bodenbach), Děčín, Bohême (auj. Tchéquie)": {
   "lat": 50.775,
   "lon": 14.204,
@@ -444,15 +1064,80 @@
   "lon": 13.8496,
   "src": "claude"
  },
+ "Preuilly-la-Ville, 36167, Indre, Centre-Val de Loire, France": {
+  "lat": 46.697,
+  "lon": 0.9796,
+  "src": "claude"
+ },
+ "Puiseux-lès-Louvres (auj. Puiseux-en-France), 95509, Val-d'Oise, Ile-de-France, France": {
+  "lat": 49.0703,
+  "lon": 2.4896,
+  "src": "claude"
+ },
+ "Puycornet, 82144, Tarn-et-Garonne, Midi-Pyrénées, France": {
+  "lat": 44.153,
+  "lon": 1.3233,
+  "src": "claude"
+ },
+ "Quartier de las Bourgues (?), Montesquieu-Volvestre, 31375, Haute-Garonne, Midi-Pyrénées, France": {
+  "lat": 43.1778,
+  "lon": 1.2184,
+  "src": "claude"
+ },
+ "Quinssaines, 03212, Allier, Auvergne, France": {
+  "lat": 46.3093,
+  "lon": 2.4903,
+  "src": "claude"
+ },
+ "Radechov (maison forestière), paroisse de Dolní Krupá, district de Mladá Boleslav, Bohême (auj. Tchéquie)": {
+  "lat": 50.5463,
+  "lon": 14.8672,
+  "src": "claude"
+ },
+ "Radechov (maison forestière, sans numéro), paroisse de Dolní Krupá, district de Mladá Boleslav, Bohême (auj. Tchéquie)": {
+  "lat": 50.5463,
+  "lon": 14.8672,
+  "src": "claude"
+ },
+ "Radechov, paroisse de Dolní Krupá, Bohême": {
+  "lat": 50.5463,
+  "lon": 14.8672,
+  "src": "claude"
+ },
+ "Rečkov n° 5, Malá Bělá, Bohême (auj. Tchéquie)": {
+  "lat": 50.4982,
+  "lon": 14.9047,
+  "src": "claude"
+ },
  "Rečkov, Malá Bělá, Bohême (auj. Tchéquie)": {
   "lat": 50.497,
   "lon": 14.907,
+  "src": "claude"
+ },
+ "Rosedale and Rosehill Cemetery, Linden, Union, New Jersey, Etats-Unis d'Amérique": {
+  "lat": 40.6353,
+  "lon": -74.2398,
   "src": "claude"
  },
  "Rue paul lafarge, Saint-Denis, 93066, Seine-Saint-Denis, Ile-de-France, France": {
   "lat": 48.9383732,
   "lon": 2.3627508,
   "src": "osm"
+ },
+ "Ruffec, 36176, Indre, Centre-Val de Loire, France": {
+  "lat": 46.6281,
+  "lon": 1.1793,
+  "src": "claude"
+ },
+ "Ruszkabánya (auj. Rusca Montană, Roumanie)": {
+  "lat": 45.5674,
+  "lon": 22.4582,
+  "src": "claude"
+ },
+ "Ruszkabánya n° 345, Krassó-Szörény, Hongrie (auj. Rusca Montană, Roumanie)": {
+  "lat": 45.5674,
+  "lon": 22.4582,
+  "src": "claude"
  },
  "Rákoscsaba, Bártfa utca 79": {
   "lat": 47.484,
@@ -469,15 +1154,70 @@
   "lon": 19.238,
   "src": "claude"
  },
+ "Rákosliget, Pest, Hongrie (auj. Budapest XVII)": {
+  "lat": 47.4889,
+  "lon": 19.2593,
+  "src": "claude"
+ },
  "Saint-Denis, 93066, Seine-Saint-Denis, Ile-de-France, France": {
   "lat": 48.9378,
   "lon": 2.3657,
   "src": "insee"
  },
+ "Saint-Georges, 32377, Gers, Midi-Pyrénées, France": {
+  "lat": 43.7374,
+  "lon": 0.9295,
+  "src": "claude"
+ },
+ "Saint-Hilaire, Durfort-Lacapelette, 82051, Tarn-et-Garonne, Midi-Pyrénées, France": {
+  "lat": 44.1823,
+  "lon": 1.141,
+  "src": "claude"
+ },
+ "Saint-Hilaire-sur-Benaize, 36197, Indre, Centre-Val de Loire, France": {
+  "lat": 46.5545,
+  "lon": 1.069,
+  "src": "claude"
+ },
+ "Saint-Jean-de-Golfech (paroisse), Golfech, 82072, Tarn-et-Garonne, Midi-Pyrénées, France": {
+  "lat": 44.1105,
+  "lon": 0.8572,
+  "src": "claude"
+ },
+ "Saint-Jean-de-Perges (paroisse), Labarthe, 82077, Tarn-et-Garonne, Midi-Pyrénées, France": {
+  "lat": 44.2031,
+  "lon": 1.314,
+  "src": "claude"
+ },
  "Saint-Jean-de-Thurac, 47248, Lot-et-Garonne, Aquitaine, France": {
   "lat": 44.1552,
   "lon": 0.7406,
   "src": "insee"
+ },
+ "Saint-Julien-de-Goudourville (paroisse), Goudourville, 82073, Tarn-et-Garonne, Midi-Pyrénées, France": {
+  "lat": 44.113,
+  "lon": 0.9304,
+  "src": "claude"
+ },
+ "Saint-Loup, 23209, Creuse, Limousin, France": {
+  "lat": 46.1471,
+  "lon": 2.2827,
+  "src": "claude"
+ },
+ "Saint-Martinien, 03246, Allier, Auvergne, France": {
+  "lat": 46.3328,
+  "lon": 2.442,
+  "src": "claude"
+ },
+ "Saint-Ouen, 93070, Seine-Saint-Denis, Ile-de-France, France": {
+  "lat": 48.9118,
+  "lon": 2.3329,
+  "src": "claude"
+ },
+ "Saint-Paul-d'Elburgues (paroisse), Durfort-Lacapelette, 82051, Tarn-et-Garonne, Midi-Pyrénées, France": {
+  "lat": 44.1823,
+  "lon": 1.141,
+  "src": "claude"
  },
  "Saint-Pierre-de-Clairac, 47269, Lot-et-Garonne, Aquitaine, France": {
   "lat": 44.1832,
@@ -489,9 +1229,39 @@
   "lon": 0.7749,
   "src": "insee"
  },
+ "Saint-Vincent-de-Tissac (paroisse), Cazes-Mondenard, 82042, Tarn-et-Garonne, Midi-Pyrénées, France": {
+  "lat": 44.2114,
+  "lon": 1.219,
+  "src": "claude"
+ },
+ "Salzbourg, Autriche": {
+  "lat": 47.7981,
+  "lon": 13.0465,
+  "src": "claude"
+ },
+ "Sartrouville, 78586, Yvelines, Ile-de-France, France": {
+  "lat": 48.9374,
+  "lon": 2.1744,
+  "src": "claude"
+ },
+ "Section Saint-Pierre, Moissac, 82112, Tarn-et-Garonne, Midi-Pyrénées, France": {
+  "lat": 44.1219,
+  "lon": 1.1002,
+  "src": "claude"
+ },
+ "Sedan, 08409, Ardennes, Grand Est, France": {
+  "lat": 49.6993,
+  "lon": 4.9269,
+  "src": "claude"
+ },
  "Sestri Levante, Genova, Liguria, Italie (?)": {
   "lat": 44.2716,
   "lon": 9.396,
+  "src": "claude"
+ },
+ "Sestri Levante, Vicolo Marina 1, Genova, Liguria, Italie": {
+  "lat": 44.2715,
+  "lon": 9.3959,
   "src": "claude"
  },
  "Setif, 19001, , Sétif, Algérie": {
@@ -509,15 +1279,40 @@
   "lon": 7.7621,
   "src": "insee"
  },
+ "Suisse": {
+  "lat": 46.7986,
+  "lon": 8.232,
+  "src": "claude"
+ },
+ "Sulz am Neckar, Wurtemberg, Allemagne": {
+  "lat": 48.3618,
+  "lon": 8.6314,
+  "src": "claude"
+ },
  "Svébořice (Schwabitz), paroisse de Svébořice, district de Česká Lípa, Bohême (auj. Tchéquie) — HYPOTHÈSE": {
   "lat": 50.6525,
   "lon": 14.7753,
+  "src": "claude"
+ },
+ "Szelezsán (Szelezsány), près de Borossebes, comté d’Arad, Hongrie (auj. Roumanie)": {
+  "lat": 46.3843,
+  "lon": 21.7088,
   "src": "claude"
  },
  "Talence, 33522, Gironde, Aquitaine, France": {
   "lat": 44.8061,
   "lon": -0.5918,
   "src": "insee"
+ },
+ "Tchécoslovaquie (lieu exact inconnu)": {
+  "lat": 49.7439,
+  "lon": 15.3381,
+  "src": "claude"
+ },
+ "Teillet-Argenty, 03279, Allier, Auvergne, France": {
+  "lat": 46.2644,
+  "lon": 2.5186,
+  "src": "claude"
  },
  "Temesvár (auj. Timișoara, Roumanie)": {
   "lat": 45.7489,
@@ -539,15 +1334,30 @@
   "lon": 14.638,
   "src": "claude"
  },
+ "Thenay (?), 36220, Indre, Centre-Val de Loire, France": {
+  "lat": 46.5974,
+  "lon": 1.4246,
+  "src": "claude"
+ },
  "Toulouse, 31555, Haute-Garonne, Midi-Pyrénées, France": {
   "lat": 43.6007,
   "lon": 1.4328,
   "src": "insee"
  },
+ "Tournon (?)": {
+  "lat": 44.4006,
+  "lon": 0.9993,
+  "src": "claude"
+ },
  "Tours, 37261, Indre-et-Loire, Centre-Val de Loire, France": {
   "lat": 47.3943,
   "lon": 0.6949,
   "src": "insee"
+ },
+ "Treignat, 03288, Allier, Auvergne, France": {
+  "lat": 46.3469,
+  "lon": 2.3458,
+  "src": "claude"
  },
  "Trieszt, Autriche": {
   "lat": 45.6495,
@@ -559,15 +1369,45 @@
   "lon": 14.504,
   "src": "claude"
  },
+ "Tuhaň, district de Dubá, Bohême (auj. Tchéquie)": {
+  "lat": 50.5469,
+  "lon": 14.5027,
+  "src": "claude"
+ },
  "Valennes, 72366, Sarthe, Pays de la Loire, France": {
   "lat": 48.0036,
   "lon": 0.8069,
   "src": "insee"
  },
+ "Varennes, Lussat, 23114, Creuse, Limousin, France": {
+  "lat": 46.1881,
+  "lon": 2.3284,
+  "src": "claude"
+ },
+ "Vazerac, 82189, Tarn-et-Garonne, Midi-Pyrénées, France": {
+  "lat": 44.2074,
+  "lon": 1.2774,
+  "src": "claude"
+ },
  "Verdun, 55545, Meuse, Lorraine, France": {
   "lat": 49.144,
   "lon": 5.3609,
   "src": "insee"
+ },
+ "Veselá (Wesella) n° 3, domaine de Šťáhlavy, cercle de Plzeň, Bohême (domicile légal pour la conscription)": {
+  "lat": 49.6762,
+  "lon": 13.504,
+  "src": "claude"
+ },
+ "Viersat, 23261, Creuse, Limousin, France": {
+  "lat": 46.2628,
+  "lon": 2.4473,
+  "src": "claude"
+ },
+ "Villatte, Teillet-Argenty, 03279, Allier, Auvergne, France": {
+  "lat": 46.2644,
+  "lon": 2.5186,
+  "src": "claude"
  },
  "Villeneuve-de-Marsan, 40331, Landes, Aquitaine, France": {
   "lat": 43.9087,
@@ -589,6 +1429,31 @@
   "lon": 18.678,
   "src": "claude"
  },
+ "Wiesengrund (Dobřany), hôpital psychiatrique, district de Plzeň, Bohême (auj. Tchéquie)": {
+  "lat": 49.6554,
+  "lon": 13.2908,
+  "src": "claude"
+ },
+ "Zakopaná, Bohême (auj. Tchéquie)": {
+  "lat": 50.5121,
+  "lon": 15.0771,
+  "src": "claude"
+ },
+ "Zdice n° 169, district de Hořovice, Bohême (auj. Tchéquie)": {
+  "lat": 49.912,
+  "lon": 13.978,
+  "src": "claude"
+ },
+ "Zdice, district de Hořovice, Bohême (auj. Tchéquie)": {
+  "lat": 49.912,
+  "lon": 13.978,
+  "src": "claude"
+ },
+ "Évreux, 27229, Eure, Normandie, France": {
+  "lat": 49.018,
+  "lon": 1.1406,
+  "src": "claude"
+ },
  "Šťáhlavice, paroisse de Chválenice, district de Plzeň, Bohême (auj. Tchéquie)": {
   "lat": 49.66,
   "lon": 13.525,
@@ -602,36 +1467,6 @@
  "Žákava, paroisse de Chválenice, district de Plzeň, Bohême (auj. Tchéquie)": {
   "lat": 49.628,
   "lon": 13.536,
-  "src": "claude"
- },
- "Hradčany (Kummer) n° 37, paroisse de Mimoň, Bohême (auj. Tchéquie)": {
-  "lat": 50.616,
-  "lon": 14.703,
-  "src": "claude"
- },
- "Hradčany (Kummer), Bohême": {
-  "lat": 50.616,
-  "lon": 14.703,
-  "src": "claude"
- },
- "Planiny (Planin) n° 12, maison forestière près de Nebílovský Borek, paroisse de Chválenice, district de Rokycany, Bohême (auj. Tchéquie)": {
-  "lat": 49.625,
-  "lon": 13.45,
-  "src": "claude"
- },
- "Mnichovo Hradiště, Bohême (auj. Tchéquie)": {
-  "lat": 50.527,
-  "lon": 14.971,
-  "src": "claude"
- },
- "Bezděz (Großbösig), Bohême (auj. Tchéquie)": {
-  "lat": 50.538,
-  "lon": 14.72,
-  "src": "claude"
- },
- "Hradčany (Kummer), paroisse de Mimoň, Bohême (auj. Tchéquie)": {
-  "lat": 50.616,
-  "lon": 14.703,
   "src": "claude"
  }
 }
