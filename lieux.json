@@ -623,5 +623,15 @@
   "lat": 50.527,
   "lon": 14.971,
   "src": "claude"
+ },
+ "Bezděz (Großbösig), Bohême (auj. Tchéquie)": {
+  "lat": 50.538,
+  "lon": 14.72,
+  "src": "claude"
+ },
+ "Hradčany (Kummer), paroisse de Mimoň, Bohême (auj. Tchéquie)": {
+  "lat": 50.616,
+  "lon": 14.703,
+  "src": "claude"
  }
 }
