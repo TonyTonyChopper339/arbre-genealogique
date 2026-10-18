@@ -1468,5 +1468,20 @@
   "lat": 49.628,
   "lon": 13.536,
   "src": "claude"
+ },
+ "La Chaussée, 86069, Vienne, Nouvelle-Aquitaine, France": {
+  "lat": 46.8849,
+  "lon": 0.107,
+  "src": "claude"
+ },
+ "Saint-Jean-de-Sauves, 86225, Vienne, Nouvelle-Aquitaine, France": {
+  "lat": 46.8386,
+  "lon": 0.0847,
+  "src": "claude"
+ },
+ "Verrue, 86286, Vienne, Nouvelle-Aquitaine, France": {
+  "lat": 46.8673,
+  "lon": 0.1817,
+  "src": "claude"
  }
 }
