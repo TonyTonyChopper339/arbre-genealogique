@@ -104,6 +104,11 @@
   "lon": 2.3901,
   "src": "claude"
  },
+ "Brouay, Calvados, Normandie, France": {
+  "lat": 49.2156,
+  "lon": -0.5653,
+  "src": "claude"
+ },
  "Brunenc (?), Goudourville, 82073, Tarn-et-Garonne, Midi-Pyrénées, France": {
   "lat": 44.113,
   "lon": 0.9304,
@@ -189,6 +194,11 @@
   "lon": 19.072,
   "src": "claude"
  },
+ "Budapest VII (Erzsébetváros), István út 45": {
+  "lat": 47.5065,
+  "lon": 19.087,
+  "src": "claude"
+ },
  "Budapest VII, Nefelejcs utca 17": {
   "lat": 47.506,
   "lon": 19.083,
@@ -197,6 +207,11 @@
  "Budapest VII, paroisse d'Erzsébetváros": {
   "lat": 47.505,
   "lon": 19.076,
+  "src": "claude"
+ },
+ "Budapest VIII (Józsefváros)": {
+  "lat": 47.4896,
+  "lon": 19.0815,
   "src": "claude"
  },
  "Budapest VIII, Lujza utca 14": {
@@ -254,6 +269,11 @@
   "lon": 1.1757,
   "src": "claude"
  },
+ "Béthines, 86025, Vienne, Nouvelle-Aquitaine, France": {
+  "lat": 46.5447,
+  "lon": 0.9649,
+  "src": "insee"
+ },
  "Bílá Hlína n° 24, district de Mnichovo Hradiště, Bohême (auj. Tchéquie)": {
   "lat": 50.5326,
   "lon": 14.9252,
@@ -294,6 +314,11 @@
   "lon": 1.2321,
   "src": "insee"
  },
+ "Cardonville, 14136, Calvados, Normandie, France": {
+  "lat": 49.3472,
+  "lon": -1.052,
+  "src": "insee"
+ },
  "Carelnaut (?), Goudourville, 82073, Tarn-et-Garonne, Midi-Pyrénées, France": {
   "lat": 44.113,
   "lon": 0.9304,
@@ -302,6 +327,21 @@
  "Carelnaut (?), Saint-Julien-de-Goudourville (paroisse), Goudourville, 82073, Tarn-et-Garonne, Midi-Pyrénées, France": {
   "lat": 44.113,
   "lon": 0.9304,
+  "src": "claude"
+ },
+ "Castelsagrat, 82034, Tarn-et-Garonne, Midi-Pyrénées, France": {
+  "lat": 44.1806,
+  "lon": 0.9474,
+  "src": "claude"
+ },
+ "Castelsarrasin, 82033, Tarn-et-Garonne, Midi-Pyrénées, France": {
+  "lat": 44.0397,
+  "lon": 1.1072,
+  "src": "claude"
+ },
+ "Castilly, Isigny-sur-Mer, 14342, Calvados, Normandie, France": {
+  "lat": 49.282,
+  "lon": -1.068,
   "src": "claude"
  },
  "Cazes-Mondenard, 82042, Tarn-et-Garonne, Midi-Pyrénées, France": {
@@ -404,6 +444,11 @@
   "lon": 2.5462,
   "src": "claude"
  },
+ "Donchery, 08142, Ardennes, Champagne-Ardenne, France": {
+  "lat": 49.732,
+  "lon": 4.8886,
+  "src": "insee"
+ },
  "Dondas, 47082, Lot-et-Garonne, Aquitaine, France": {
   "lat": 44.2397,
   "lon": 0.8614,
@@ -474,6 +519,11 @@
   "lon": 2.4102,
   "src": "claude"
  },
+ "Gandaille, Dondas, 47082, Lot-et-Garonne, Aquitaine, France": {
+  "lat": 44.2492,
+  "lon": 0.8597,
+  "src": "claude"
+ },
  "Golfech, 82072, Tarn-et-Garonne, Midi-Pyrénées, France": {
   "lat": 44.1105,
   "lon": 0.8572,
@@ -504,6 +554,11 @@
   "lon": 6.6128242,
   "src": "osm"
  },
+ "Hauteville-la-Guichard, 50232, Manche, Normandie, France": {
+  "lat": 49.1225,
+  "lon": -1.2853,
+  "src": "claude"
+ },
  "Hradčany (Kummer) n° 37, paroisse de Mimoň, Bohême (auj. Tchéquie)": {
   "lat": 50.616,
   "lon": 14.703,
@@ -518,6 +573,11 @@
   "lat": 50.616,
   "lon": 14.703,
   "src": "claude"
+ },
+ "Huriel, 03128, Allier, Auvergne, France": {
+  "lat": 46.3757,
+  "lon": 2.4812,
+  "src": "insee"
  },
  "Huttenheim, 67216, Bas-Rhin, Grand Est, France": {
   "lat": 48.3497,
@@ -602,6 +662,11 @@
  "La Chaumette, Nouhant, 23145, Creuse, Limousin, France": {
   "lat": 46.2924,
   "lon": 2.3901,
+  "src": "claude"
+ },
+ "La Chaussée, 86069, Vienne, Nouvelle-Aquitaine, France": {
+  "lat": 46.8849,
+  "lon": 0.107,
   "src": "claude"
  },
  "La Collancelle, 58080, Nièvre, Bourgogne, France": {
@@ -704,10 +769,20 @@
   "lon": 14.13,
   "src": "claude"
  },
+ "Les Oubeaux, Isigny-sur-Mer, 14342, Calvados, Normandie, France": {
+  "lat": 49.3,
+  "lon": -1.07,
+  "src": "claude"
+ },
  "Linden, , , New Jersey, Etats-Unis d'Amérique": {
   "lat": 40.6220478,
   "lon": -74.2445902,
   "src": "osm"
+ },
+ "Lison, Calvados, Normandie, France": {
+  "lat": 49.2236,
+  "lon": -1.0453,
+  "src": "claude"
  },
  "Litoměřice, Bohême (auj. Tchéquie)": {
   "lat": 50.5341,
@@ -779,6 +854,11 @@
   "lon": -1.2903,
   "src": "claude"
  },
+ "Martaizé, 86149, Vienne, Nouvelle-Aquitaine, France": {
+  "lat": 46.92,
+  "lon": 0.0519,
+  "src": "insee"
+ },
  "Mauriac, 15120, Cantal, Auvergne, France": {
   "lat": 45.2209,
   "lon": 2.3209,
@@ -803,6 +883,11 @@
   "lat": 46.455,
   "lon": 22.255,
   "src": "claude"
+ },
+ "Messemé, 86156, Vienne, Nouvelle-Aquitaine, France": {
+  "lat": 47.0098,
+  "lon": 0.1637,
+  "src": "insee"
  },
  "Meymac, 19136, Corrèze, Limousin, France": {
   "lat": 45.5527,
@@ -914,6 +999,16 @@
   "lon": 1.219,
   "src": "claude"
  },
+ "Mouterre-Silly, 86173, Vienne, Nouvelle-Aquitaine, France": {
+  "lat": 46.9837,
+  "lon": 0.0355,
+  "src": "insee"
+ },
+ "Mouzon, 08311, Ardennes, Champagne-Ardenne, France": {
+  "lat": 49.5978,
+  "lon": 5.0752,
+  "src": "insee"
+ },
  "Munich-Riem, Allemagne → New York, États-Unis": {
   "lat": 48.144,
   "lon": 11.6778,
@@ -933,6 +1028,11 @@
   "lat": 40.7127,
   "lon": -74.006,
   "src": "claude"
+ },
+ "Nolay, 58196, Nièvre, Bourgogne, France": {
+  "lat": 47.1178,
+  "lon": 3.3197,
+  "src": "insee"
  },
  "Nonancourt, 27438, Eure, Normandie, France": {
   "lat": 48.7775,
@@ -957,6 +1057,11 @@
  "Nérac, 47195, Lot-et-Garonne, Aquitaine, France": {
   "lat": 44.1339,
   "lon": 0.347,
+  "src": "insee"
+ },
+ "Osmanville, 14480, Calvados, Normandie, France": {
+  "lat": 49.3331,
+  "lon": -1.0864,
   "src": "insee"
  },
  "Oulches, 36148, Indre, Centre-Val de Loire, France": {
@@ -1064,6 +1169,11 @@
   "lon": 13.8496,
   "src": "claude"
  },
+ "Pommevic, 82141, Tarn-et-Garonne, Midi-Pyrénées, France": {
+  "lat": 44.0961,
+  "lon": 0.9328,
+  "src": "claude"
+ },
  "Preuilly-la-Ville, 36167, Indre, Centre-Val de Loire, France": {
   "lat": 46.697,
   "lon": 0.9796,
@@ -1078,6 +1188,11 @@
   "lat": 44.153,
   "lon": 1.3233,
   "src": "claude"
+ },
+ "Pérols-sur-Vézère, 19160, Corrèze, Limousin, France": {
+  "lat": 45.5731,
+  "lon": 2.009,
+  "src": "insee"
  },
  "Quartier de las Bourgues (?), Montesquieu-Volvestre, 31375, Haute-Garonne, Midi-Pyrénées, France": {
   "lat": 43.1778,
@@ -1102,6 +1217,11 @@
  "Radechov, paroisse de Dolní Krupá, Bohême": {
   "lat": 50.5463,
   "lon": 14.8672,
+  "src": "claude"
+ },
+ "Remilly-sur-Lozon (auj. Remilly-les-Marais), 50431, Manche, Normandie, France": {
+  "lat": 49.1786,
+  "lon": -1.2592,
   "src": "claude"
  },
  "Rečkov n° 5, Malá Bělá, Bohême (auj. Tchéquie)": {
@@ -1169,6 +1289,16 @@
   "lon": 0.9295,
   "src": "claude"
  },
+ "Saint-Georges-d'Elle, Manche, Normandie, France": {
+  "lat": 49.1525,
+  "lon": -0.8875,
+  "src": "claude"
+ },
+ "Saint-Germain-du-Pert, 14586, Calvados, Normandie, France": {
+  "lat": 49.3299,
+  "lon": -1.0427,
+  "src": "insee"
+ },
  "Saint-Hilaire, Durfort-Lacapelette, 82051, Tarn-et-Garonne, Midi-Pyrénées, France": {
   "lat": 44.1823,
   "lon": 1.141,
@@ -1187,6 +1317,11 @@
  "Saint-Jean-de-Perges (paroisse), Labarthe, 82077, Tarn-et-Garonne, Midi-Pyrénées, France": {
   "lat": 44.2031,
   "lon": 1.314,
+  "src": "claude"
+ },
+ "Saint-Jean-de-Sauves, 86225, Vienne, Nouvelle-Aquitaine, France": {
+  "lat": 46.8386,
+  "lon": 0.0847,
   "src": "claude"
  },
  "Saint-Jean-de-Thurac, 47248, Lot-et-Garonne, Aquitaine, France": {
@@ -1209,6 +1344,11 @@
   "lon": 2.442,
   "src": "claude"
  },
+ "Saint-Nicolas (paroisse), Coutances, 50147, Manche, Normandie, France": {
+  "lat": 49.0478,
+  "lon": -1.4453,
+  "src": "claude"
+ },
  "Saint-Ouen, 93070, Seine-Saint-Denis, Ile-de-France, France": {
   "lat": 48.9118,
   "lon": 2.3329,
@@ -1227,6 +1367,11 @@
  "Saint-Romain-le-Noble, 47274, Lot-et-Garonne, Aquitaine, France": {
   "lat": 44.1571,
   "lon": 0.7749,
+  "src": "insee"
+ },
+ "Saint-Révérien, 58266, Nièvre, Bourgogne, France": {
+  "lat": 47.203,
+  "lon": 3.5146,
   "src": "insee"
  },
  "Saint-Vincent-de-Tissac (paroisse), Cazes-Mondenard, 82042, Tarn-et-Garonne, Midi-Pyrénées, France": {
@@ -1268,6 +1413,11 @@
   "lat": 36.1893494,
   "lon": 5.4046876,
   "src": "osm"
+ },
+ "Signy-Montlibert, 08421, Ardennes, Champagne-Ardenne, France": {
+  "lat": 49.5788,
+  "lon": 5.3158,
+  "src": "insee"
  },
  "Starý Plzenec, Bohême": {
   "lat": 49.697,
@@ -1359,6 +1509,11 @@
   "lon": 2.3458,
   "src": "claude"
  },
+ "Tribehou, 50606, Manche, Normandie, France": {
+  "lat": 49.1458,
+  "lon": -1.2397,
+  "src": "claude"
+ },
  "Trieszt, Autriche": {
   "lat": 45.6495,
   "lon": 13.7768,
@@ -1394,6 +1549,11 @@
   "lon": 5.3609,
   "src": "insee"
  },
+ "Verrue, 86286, Vienne, Nouvelle-Aquitaine, France": {
+  "lat": 46.8673,
+  "lon": 0.1817,
+  "src": "claude"
+ },
  "Veselá (Wesella) n° 3, domaine de Šťáhlavy, cercle de Plzeň, Bohême (domicile légal pour la conscription)": {
   "lat": 49.6762,
   "lon": 13.504,
@@ -1413,6 +1573,11 @@
   "lat": 43.9087,
   "lon": -0.3057,
   "src": "insee"
+ },
+ "Vindefontaine (auj. Picauville), Manche, Normandie, France": {
+  "lat": 49.322,
+  "lon": -1.403,
+  "src": "claude"
  },
  "Vitry-sur-Seine, 94081, Val-de-Marne, Ile-de-France, France": {
   "lat": 48.7893,
@@ -1467,21 +1632,6 @@
  "Žákava, paroisse de Chválenice, district de Plzeň, Bohême (auj. Tchéquie)": {
   "lat": 49.628,
   "lon": 13.536,
-  "src": "claude"
- },
- "La Chaussée, 86069, Vienne, Nouvelle-Aquitaine, France": {
-  "lat": 46.8849,
-  "lon": 0.107,
-  "src": "claude"
- },
- "Saint-Jean-de-Sauves, 86225, Vienne, Nouvelle-Aquitaine, France": {
-  "lat": 46.8386,
-  "lon": 0.0847,
-  "src": "claude"
- },
- "Verrue, 86286, Vienne, Nouvelle-Aquitaine, France": {
-  "lat": 46.8673,
-  "lon": 0.1817,
   "src": "claude"
  }
 }
