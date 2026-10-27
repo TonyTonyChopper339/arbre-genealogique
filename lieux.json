@@ -99,6 +99,11 @@
   "lon": 1.141,
   "src": "claude"
  },
+ "Bourdeaux, 26056, Drôme, Auvergne-Rhône-Alpes, France": {
+  "lat": 44.5793,
+  "lon": 5.1664,
+  "src": "claude"
+ },
  "Bourg de Bellefaye, Nouhant, 23145, Creuse, Limousin, France": {
   "lat": 46.2924,
   "lon": 2.3901,
@@ -404,6 +409,11 @@
   "lon": 1.0194,
   "src": "claude"
  },
+ "Conflans-sur-Anille, 72087, Sarthe, Pays de la Loire, France": {
+  "lat": 47.9715,
+  "lon": 0.7253,
+  "src": "claude"
+ },
  "Corbeil-Essonnes, 91174, Essonne, Ile-de-France, France": {
   "lat": 48.5973,
   "lon": 2.4646,
@@ -412,6 +422,11 @@
  "Cour d'appel de Paris (8e chambre)": {
   "lat": 48.8556,
   "lon": 2.345,
+  "src": "claude"
+ },
+ "Cour-Cheverny, 41067, Loir-et-Cher, Centre-Val de Loire, France": {
+  "lat": 47.5057,
+  "lon": 1.4725,
   "src": "claude"
  },
  "Doksy (Hirschberg), Bohême (auj. Tchéquie)": {
@@ -482,6 +497,11 @@
  "Ferdinandsberg (Nándorhegy), comté de Krassó-Szörény, Hongrie (auj. Oțelu Roșu, Roumanie)": {
   "lat": 45.5167,
   "lon": 22.3667,
+  "src": "claude"
+ },
+ "Festalemps, Saint Privat en Périgord, 24490, Dordogne, Nouvelle-Aquitaine, France": {
+  "lat": 45.2266,
+  "lon": 0.2058,
   "src": "claude"
  },
  "Fichtenbach": {
@@ -589,6 +609,11 @@
   "lon": 14.13,
   "src": "claude"
  },
+ "Ibn Ziad, Constantine, Algérie": {
+  "lat": 36.3797,
+  "lon": 6.4722,
+  "src": "claude"
+ },
  "Isigny-sur-Mer, 14342, Calvados, Normandie, France": {
   "lat": 49.2852,
   "lon": -1.057,
@@ -644,6 +669,11 @@
   "lon": 14.802,
   "src": "claude"
  },
+ "La Baume-Cornillane, 26032, Drôme, Auvergne-Rhône-Alpes, France": {
+  "lat": 44.8316,
+  "lon": 5.0462,
+  "src": "claude"
+ },
  "La Cascoulèse (?), Cazes-Mondenard, 82042, Tarn-et-Garonne, Midi-Pyrénées, France": {
   "lat": 44.2114,
   "lon": 1.219,
@@ -657,6 +687,11 @@
  "La Catoune, Saint-Paul-d'Elburgues (paroisse), Durfort-Lacapelette, 82051, Tarn-et-Garonne, Midi-Pyrénées, France": {
   "lat": 44.1823,
   "lon": 1.141,
+  "src": "claude"
+ },
+ "La Charce, 26075, Drôme, Auvergne-Rhône-Alpes, France": {
+  "lat": 44.4698,
+  "lon": 5.442,
   "src": "claude"
  },
  "La Chaumette, Nouhant, 23145, Creuse, Limousin, France": {
@@ -682,6 +717,11 @@
  "La Haye-du-Puits, La Haye, 50236, Manche, Normandie, France": {
   "lat": 49.2911,
   "lon": -1.5451,
+  "src": "claude"
+ },
+ "La Motte-Chalancon, 26215, Drôme, Auvergne-Rhône-Alpes, France": {
+  "lat": 44.499,
+  "lon": 5.3848,
   "src": "claude"
  },
  "La Tuque (?), Saint-Julien-de-Goudourville (paroisse), Goudourville, 82073, Tarn-et-Garonne, Midi-Pyrénées, France": {
@@ -792,6 +832,11 @@
  "Loudun, 86137, Vienne, Nouvelle-Aquitaine, France": {
   "lat": 47.0116,
   "lon": 0.1048,
+  "src": "claude"
+ },
+ "Lunéville, 54329, Meurthe-et-Moselle, Grand Est, France": {
+  "lat": 48.5963,
+  "lon": 6.5101,
   "src": "claude"
  },
  "Lussat, 23114, Creuse, Limousin, France": {
@@ -989,6 +1034,11 @@
   "lon": 1.2184,
   "src": "claude"
  },
+ "Montjoux, 26202, Drôme, Auvergne-Rhône-Alpes, France": {
+  "lat": 44.4879,
+  "lon": 5.1042,
+  "src": "claude"
+ },
  "Montluçon, 03185, Allier, Auvergne, France": {
   "lat": 46.3428,
   "lon": 2.608,
@@ -1027,6 +1077,11 @@
  "New York, New York, États-Unis": {
   "lat": 40.7127,
   "lon": -74.006,
+  "src": "claude"
+ },
+ "Niderhoff, 57504, Moselle, Grand Est, France": {
+  "lat": 48.6276,
+  "lon": 7.0138,
   "src": "claude"
  },
  "Nolay, 58196, Nièvre, Bourgogne, France": {
@@ -1174,6 +1229,11 @@
   "lon": 0.9328,
   "src": "claude"
  },
+ "Pontaix, 26248, Drôme, Auvergne-Rhône-Alpes, France": {
+  "lat": 44.7541,
+  "lon": 5.2604,
+  "src": "claude"
+ },
  "Preuilly-la-Ville, 36167, Indre, Centre-Val de Loire, France": {
   "lat": 46.697,
   "lon": 0.9796,
@@ -1279,10 +1339,20 @@
   "lon": 19.2593,
   "src": "claude"
  },
+ "Saint-Calais, 72269, Sarthe, Pays de la Loire, France": {
+  "lat": 47.932,
+  "lon": 0.7418,
+  "src": "claude"
+ },
  "Saint-Denis, 93066, Seine-Saint-Denis, Ile-de-France, France": {
   "lat": 48.9378,
   "lon": 2.3657,
   "src": "insee"
+ },
+ "Saint-Dizier-en-Diois, 26300, Drôme, Auvergne-Rhône-Alpes, France": {
+  "lat": 44.5133,
+  "lon": 5.4847,
+  "src": "claude"
  },
  "Saint-Georges, 32377, Gers, Midi-Pyrénées, France": {
   "lat": 43.7374,
@@ -1349,6 +1419,11 @@
   "lon": -1.4453,
   "src": "claude"
  },
+ "Saint-Nicolas-de-Port, 54483, Meurthe-et-Moselle, Grand Est, France": {
+  "lat": 48.62,
+  "lon": 6.2953,
+  "src": "claude"
+ },
  "Saint-Ouen, 93070, Seine-Saint-Denis, Ile-de-France, France": {
   "lat": 48.9118,
   "lon": 2.3329,
@@ -1363,6 +1438,11 @@
   "lat": 44.1832,
   "lon": 0.7512,
   "src": "insee"
+ },
+ "Saint-Privat-des-Prés, Saint Privat en Périgord, 24490, Dordogne, Nouvelle-Aquitaine, France": {
+  "lat": 45.2266,
+  "lon": 0.2058,
+  "src": "claude"
  },
  "Saint-Romain-le-Noble, 47274, Lot-et-Garonne, Aquitaine, France": {
   "lat": 44.1571,
@@ -1529,6 +1609,11 @@
   "lon": 14.5027,
   "src": "claude"
  },
+ "Valdrôme, 26361, Drôme, Auvergne-Rhône-Alpes, France": {
+  "lat": 44.4969,
+  "lon": 5.5672,
+  "src": "claude"
+ },
  "Valennes, 72366, Sarthe, Pays de la Loire, France": {
   "lat": 48.0036,
   "lon": 0.8069,
@@ -1577,6 +1662,11 @@
  "Vindefontaine (auj. Picauville), Manche, Normandie, France": {
   "lat": 49.322,
   "lon": -1.403,
+  "src": "claude"
+ },
+ "Vinsobres, 26377, Drôme, Auvergne-Rhône-Alpes, France": {
+  "lat": 44.3372,
+  "lon": 5.0541,
   "src": "claude"
  },
  "Vitry-sur-Seine, 94081, Val-de-Marne, Ile-de-France, France": {
