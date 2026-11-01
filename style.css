@@ -444,19 +444,20 @@ body.in-map .controls label { display: none; }   /* générations : inutile sur 
 .lg-num { width: 18px; height: 18px; border-radius: 50%; background: var(--surface); border: 2px solid var(--muted);
   display: inline-flex; align-items: center; justify-content: center; font-size: 10.5px; font-weight: 700; flex: none; }
 
-/* trajets des ancêtres : pastille (génération) + flèche vers le descendant */
-.lin-badge-wrap { background: none; border: none; }
-.lin-badge { position: absolute; left: -10px; top: -10px; width: 20px; height: 20px; border-radius: 50%;
-  background: var(--surface); border: 2px solid var(--c); color: var(--text); box-sizing: border-box;
-  display: flex; align-items: center; justify-content: center; font: 700 10.5px/1 system-ui, -apple-system, "Segoe UI", sans-serif;
-  box-shadow: 0 1px 4px rgba(0,0,0,.35); cursor: default; }
-.lin-badge.wide { width: 30px; left: -15px; border-radius: 10px; }
-.lin-badge span { position: relative; z-index: 1; }
-.lin-arrow { position: absolute; left: 50%; top: 50%; width: 0; height: 0; margin: -5px 0 0 -4px;
-  transform-origin: 4px 5px; }
-.lin-arrow::after { content: ""; position: absolute; left: 11px; top: 0; border-style: solid;
-  border-width: 5px 0 5px 8px; border-color: transparent transparent transparent var(--c); }
-.lin-badge.wide .lin-arrow::after { left: 16px; }
+/* trajets des ancêtres : numéro de génération à côté du lieu de naissance, flèche au milieu du trajet */
+.lin-gen-wrap, .lin-arrow-wrap { background: none; border: none; }
+.lin-num { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%); white-space: nowrap;
+  font: 800 11px/1 system-ui, -apple-system, "Segoe UI", sans-serif; color: #0b0f15;
+  text-shadow: 0 0 2px #fff, 0 0 2px #fff, 0 0 3px #fff; }
+.lg-numdot { width: 16px; height: 16px; background: #22d3ee; display: inline-flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 800; color: #0b0f15; box-sizing: border-box; }
+.lin-gens { position: absolute; display: flex; gap: 2px; white-space: nowrap; }
+.lin-gen { display: inline-block; min-width: 15px; height: 15px; padding: 0 4px; border-radius: 8px; box-sizing: border-box;
+  color: #0b0f15; font: 700 10px/15px system-ui, -apple-system, "Segoe UI", sans-serif; text-align: center;
+  box-shadow: 0 0 0 1.5px var(--surface), 0 1px 3px rgba(0,0,0,.35); }
+.lin-arrow { position: absolute; left: -5px; top: -5px; width: 10px; height: 10px; }
+.lin-arrow::after { content: ""; position: absolute; left: 1px; top: 0; border-style: solid;
+  border-width: 5px 0 5px 9px; border-color: transparent transparent transparent var(--c); }
 .lin-tip { width: max-content; max-width: 360px; white-space: normal; }
 .lin-tt + .lin-tt { margin-top: 5px; padding-top: 5px; border-top: 1px solid var(--border); }
 .lin-n { display: inline-block; min-width: 16px; height: 16px; border-radius: 8px; color: #0b0f15; font-size: 10.5px; font-weight: 700;
