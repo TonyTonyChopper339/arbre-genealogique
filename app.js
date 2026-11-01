@@ -590,6 +590,10 @@ function setupCanvas() {
   };
   canvas.addEventListener("pointerdown", (e) => {
     if (e.pointerType === "mouse" && e.button !== 0) return;
+    if (e.target.closest(".zoom")) return;   // boutons + / − / Tout voir : pas de déplacement
+    // une sélection (texte surligné en bleu) laissée par un double-clic empêcherait de déplacer l'arbre
+    const sel = window.getSelection && window.getSelection();
+    if (sel && !sel.isCollapsed) sel.removeAllRanges();
     pts.set(e.pointerId, local(e));
     if (pts.size === 1) {
       drag = { sx: e.clientX, sy: e.clientY, x: state.view.x, y: state.view.y, moved: false, id: e.pointerId };
@@ -640,6 +644,11 @@ function setupCanvas() {
   };
   window.addEventListener("pointerup", end);
   window.addEventListener("pointercancel", end);
+  // jamais de glisser-déposer natif (texte, images) sur l'arbre
+  canvas.addEventListener("dragstart", (e) => e.preventDefault());
+  canvas.addEventListener("selectstart", (e) => e.preventDefault());
+  // double-clic rapide sur + / − : zoomer deux fois, sans rien sélectionner
+  $("canvas").querySelector(".zoom").addEventListener("mousedown", (e) => e.preventDefault());
   canvas.addEventListener("wheel", (e) => {
     e.preventDefault();
     const r = canvas.getBoundingClientRect();

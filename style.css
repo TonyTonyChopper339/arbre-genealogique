@@ -119,6 +119,9 @@ select, .field input, .field textarea, .field select {
   background-image: radial-gradient(var(--border) 1px, transparent 1px);
   background-size: 22px 22px;
   touch-action: none;
+  /* pas de sélection de texte (bleu) ni de glisser-déposer natif : sinon le déplacement se bloque */
+  user-select: none; -webkit-user-select: none; -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
 }
 .canvas.dragging { cursor: grabbing; }
 .world { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
