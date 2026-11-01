@@ -87,6 +87,34 @@ function birthPlace(id) {
   return e && e.place ? e.place.trim() : null;
 }
 
+/* ------------------------------------------------------------- lignées
+   Pour chaque ancêtre de la personne sélectionnée : son numéro Sosa, sa génération
+   (1 = parents), l'enfant par lequel on redescend vers elle, et le côté (paternel / maternel). */
+function lineageOf(rootId) {
+  const info = new Map([[rootId, { sosa: 1, gen: 0, child: null, side: null }]]);
+  const queue = [rootId];
+  while (queue.length) {
+    const cur = queue.shift();
+    const ci = info.get(cur);
+    const { father, mother } = parentsOf(cur);
+    [[father, 0], [mother, 1]].forEach(([par, k]) => {
+      if (!par || !P(par) || info.has(par)) return;
+      info.set(par, { sosa: ci.sosa * 2 + k, gen: ci.gen + 1, child: cur, side: ci.side || (k ? "F" : "M") });
+      queue.push(par);
+    });
+  }
+  return info;
+}
+
+// premier descendant (en redescendant vers la personne sélectionnée) dont le lieu de naissance est placé
+function anchorOf(info, id) {
+  for (let c = info.get(id).child; c; c = info.get(c).child) {
+    const b = birthPlace(c);
+    if (b && MAP.places[b]) return c;
+  }
+  return null;
+}
+
 /* ------------------------------------------------------------- géolocalisation */
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 let lastNominatim = 0;
@@ -191,6 +219,10 @@ function ensureMap() {
   }).addTo(MAP.map);
   $("map").classList.toggle("dark-tiles", isDark());
   window.addEventListener("themechange", () => $("map").classList.toggle("dark-tiles", isDark()));
+  // trajets sous les points des lieux, pastilles entre les deux
+  MAP.map.createPane("linPane").style.zIndex = 380;
+  MAP.map.createPane("linBadgePane").style.zIndex = 390;
+  MAP.map.on("zoomend", updateBadges);
   MAP.lines = L.layerGroup().addTo(MAP.map);
   MAP.markers = L.layerGroup().addTo(MAP.map);
   MAP.map.on("click", async (e) => {
@@ -237,26 +269,9 @@ function drawMap(fit) {
   const rootPlaces = [...byPlace].filter(([, evs]) => mine(evs).length).map(([pl]) => pl);
   const focus = rootPlaces.length > 0;
 
-  // migrations : lieu de naissance du parent -> lieu de naissance de l'enfant
-  if (MAP.migrations) {
-    for (const id of set.keys()) {
-      const cb = birthPlace(id);
-      if (!cb || !MAP.places[cb]) continue;
-      const { father, mother } = parentsOf(id);
-      for (const par of [father, mother]) {
-        if (!par || !set.has(par)) continue;
-        const pb = birthPlace(par);
-        if (!pb || pb === cb || !MAP.places[pb]) continue;
-        const a = MAP.places[pb], b = MAP.places[cb];
-        const hot = id === root || par === root;
-        L.polyline([[a.lat, a.lon], [b.lat, b.lon]], {
-          color: P(par).sex === "F" ? "#f28db4" : "#6fa8ff",
-          weight: hot ? 2.8 : 1.6, opacity: hot ? 0.95 : focus ? 0.22 : 0.55, dashArray: hot ? null : "4 5",
-        }).bindTooltip(`${esc(fullName(P(par)))}${relationLabel(root, par) ? ` <span class="tt-rel">(${esc(relationLabel(root, par))})</span>` : ""}, ${esc(t("bornIn", P(par).sex === "F", shortPlace(pb)))}<br>→ ${esc(t("parentOf", P(par).sex === "F", fullName(P(id))))}${id !== root && relationLabel(root, id) ? ` <span class="tt-rel">(${esc(relationLabel(root, id))})</span>` : ""}, ${esc(t("bornIn", P(id).sex === "F", shortPlace(cb)))}`, { sticky: true })
-          .addTo(MAP.lines);
-      }
-    }
-  }
+  // trajets : lieu de naissance de chaque ancêtre -> lieu de naissance de son enfant (vers la personne sélectionnée)
+  MAP.badges = [];
+  if (MAP.migrations && root && P(root)) drawLineage(root);
 
   const pts = [], rootPts = [];
   const entries = [...byPlace].sort(([a], [b]) => rootPlaces.includes(a) - rootPlaces.includes(b));  // en évidence au-dessus
@@ -318,12 +333,103 @@ function drawMap(fit) {
   renderLegend();
 }
 
+const SIDE_COLOR = { M: "#6fa8ff", F: "#f28db4" };
+
+function drawLineage(root) {
+  const info = lineageOf(root);
+  const segs = new Map();     // "lieu A→lieu B" -> { from, to, items: [{ id, to }] }
+  const segOf = new Map();    // ancêtre -> clé de son trajet (null : né au même endroit que l'enfant)
+  const nextOf = new Map();   // ancêtre -> descendant vers lequel part son trajet
+  for (const [id, inf] of info) {
+    if (!inf.gen) continue;
+    const pb = birthPlace(id);
+    if (!pb || !MAP.places[pb]) continue;
+    const a = anchorOf(info, id);
+    if (!a) continue;
+    const ab = birthPlace(a);
+    nextOf.set(id, a);
+    if (pb === ab) { segOf.set(id, null); continue; }
+    const key = pb + "\u0000" + ab;
+    if (!segs.has(key)) segs.set(key, { from: pb, to: ab, items: [] });
+    segs.get(key).items.push({ id, to: a });
+    segOf.set(id, key);
+  }
+  // tous les trajets entre un ancêtre et la personne sélectionnée
+  const chain = (id) => {
+    const keys = [];
+    for (let c = id; c && nextOf.has(c); c = nextOf.get(c)) if (segOf.get(c)) keys.push(segOf.get(c));
+    return keys;
+  };
+  const lines = new Map();
+  const highlight = (keys, on) => keys.forEach((k) => {
+    const l = lines.get(k);
+    if (l) l.setStyle(on ? { weight: l.options.baseWeight + 2.5, opacity: 1 } : { weight: l.options.baseWeight, opacity: 0.8 });
+  });
+  const relOf = (pid) => (pid === root ? t("self", P(pid).sex === "F") : relationLabel(root, pid));
+  const proj = (pl) => MAP.map.project([MAP.places[pl].lat, MAP.places[pl].lon], 0);
+
+  // les trajets les plus anciens d'abord, les plus proches de la personne par-dessus
+  const sorted = [...segs.entries()].sort(([, x], [, y]) => Math.max(...y.items.map((i) => info.get(i.id).gen)) - Math.max(...x.items.map((i) => info.get(i.id).gen)));
+  for (const [key, sg] of sorted) {
+    sg.items.sort((x, y) => info.get(x.id).sosa - info.get(y.id).sosa);
+    const gens = [...new Set(sg.items.map((i) => info.get(i.id).gen))].sort((x, y) => x - y);
+    const side = info.get(sg.items[0].id).side;
+    const a = MAP.places[sg.from], b = MAP.places[sg.to];
+    const w = Math.max(1.3, 3.4 - 0.3 * (gens[0] - 1));
+    const tip = sg.items.map((it) => {
+      const p = P(it.id), c = P(it.to), inf = info.get(it.id);
+      return `<div class="lin-tt"><span class="lin-n" style="background:${SIDE_COLOR[inf.side]}">${inf.gen}</span>
+        <b>${esc(fullName(p))}</b>${relOf(it.id) ? ` <span class="tt-rel">(${esc(relOf(it.id))} · Sosa ${inf.sosa})</span>` : ""},
+        ${esc(t("bornIn", p.sex === "F", shortPlace(sg.from)))}<br>→ ${esc(fullName(c))}${relOf(it.to) ? ` <span class="tt-rel">(${esc(relOf(it.to))})</span>` : ""},
+        ${esc(t("bornIn", c.sex === "F", shortPlace(sg.to)))}</div>`;
+    }).join("");
+    const keys = [...new Set(sg.items.flatMap((it) => chain(it.id)))];
+    const line = L.polyline([[a.lat, a.lon], [b.lat, b.lon]], {
+      pane: "linPane", color: SIDE_COLOR[side], weight: w, baseWeight: w, opacity: 0.8, lineCap: "round",
+    }).bindTooltip(tip, { sticky: true, className: "lin-tip" });
+    line.on("mouseover", () => highlight(keys, true)).on("mouseout", () => highlight(keys, false));
+    line.addTo(MAP.lines);
+    lines.set(key, line);
+
+    // pastille au milieu du trajet : numéro de génération + flèche vers le descendant
+    const pa = proj(sg.from), pb = proj(sg.to);
+    const mid = MAP.map.unproject(pa.add(pb).divideBy(2), 0);
+    const ang = Math.atan2(pb.y - pa.y, pb.x - pa.x) * 180 / Math.PI;
+    const label = gens.length > 2 ? `${gens[0]}–${gens[gens.length - 1]}` : gens.join("·");
+    const icon = L.divIcon({
+      className: "lin-badge-wrap", iconSize: [0, 0],
+      html: `<div class="lin-badge${label.length > 2 ? " wide" : ""}" style="--c:${SIDE_COLOR[side]}"><i class="lin-arrow" style="transform:rotate(${ang.toFixed(1)}deg)"></i><span>${label}</span></div>`,
+    });
+    const badge = L.marker(mid, { icon, pane: "linBadgePane", keyboard: false })
+      .bindTooltip(tip, { direction: "top", offset: [0, -12], className: "lin-tip" });
+    badge.on("mouseover", () => highlight(keys, true)).on("mouseout", () => highlight(keys, false));
+    badge.addTo(MAP.lines);
+    MAP.badges.push({ badge, a: [a.lat, a.lon], b: [b.lat, b.lon] });
+  }
+  updateBadges();
+}
+
+// les pastilles ne sont montrées que si le trajet est assez long à l'écran
+function updateBadges() {
+  if (!MAP.map || !MAP.badges) return;
+  for (const { badge, a, b } of MAP.badges) {
+    const len = MAP.map.latLngToLayerPoint(a).distanceTo(MAP.map.latLngToLayerPoint(b));
+    const el = badge.getElement();
+    if (el) el.style.display = len < 46 ? "none" : "";
+  }
+}
+
 function renderLegend() {
   $("mapLegend").replaceChildren(...[
     h("div", { class: "lg-title" }, t("epoch")),
     ...ERAS.map((e) => h("div", { class: "lg-row" }, h("span", { class: "lg-dot", style: `background:${e.color}` }), e.label)),
     h("div", { class: "lg-row" }, h("span", { class: "lg-dot", style: `background:${NO_DATE}` }), t("unknownDate")),
-    MAP.migrations ? h("div", { class: "lg-row" }, h("span", { class: "lg-line" }), t("parentChild")) : null,
+    ...(MAP.migrations ? [
+      h("div", { class: "lg-title", style: "margin-top:8px" }, t("paths")),
+      h("div", { class: "lg-row" }, h("span", { class: "lg-line", style: `border-color:${SIDE_COLOR.M}` }), t("linePat")),
+      h("div", { class: "lg-row" }, h("span", { class: "lg-line", style: `border-color:${SIDE_COLOR.F}` }), t("lineMat")),
+      h("div", { class: "lg-row" }, h("span", { class: "lg-num" }, "3"), t("genKey")),
+    ] : []),
   ].filter(Boolean));
 }
 

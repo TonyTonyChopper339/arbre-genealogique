@@ -440,7 +440,27 @@ body.in-map .controls label { display: none; }   /* générations : inutile sur 
 .lg-title { font-weight: 700; margin-bottom: 4px; color: var(--muted); text-transform: uppercase; font-size: 11px; letter-spacing: .06em; }
 .lg-row { display: flex; align-items: center; gap: 8px; padding: 1px 0; }
 .lg-dot { width: 11px; height: 11px; border-radius: 50%; border: 1.5px solid #0b0f15; }
-.lg-line { width: 18px; border-top: 2px dashed #6fa8ff; }
+.lg-line { width: 18px; border-top: 3px solid #6fa8ff; border-radius: 2px; }
+.lg-num { width: 18px; height: 18px; border-radius: 50%; background: var(--surface); border: 2px solid var(--muted);
+  display: inline-flex; align-items: center; justify-content: center; font-size: 10.5px; font-weight: 700; flex: none; }
+
+/* trajets des ancêtres : pastille (génération) + flèche vers le descendant */
+.lin-badge-wrap { background: none; border: none; }
+.lin-badge { position: absolute; left: -10px; top: -10px; width: 20px; height: 20px; border-radius: 50%;
+  background: var(--surface); border: 2px solid var(--c); color: var(--text); box-sizing: border-box;
+  display: flex; align-items: center; justify-content: center; font: 700 10.5px/1 system-ui, -apple-system, "Segoe UI", sans-serif;
+  box-shadow: 0 1px 4px rgba(0,0,0,.35); cursor: default; }
+.lin-badge.wide { width: 30px; left: -15px; border-radius: 10px; }
+.lin-badge span { position: relative; z-index: 1; }
+.lin-arrow { position: absolute; left: 50%; top: 50%; width: 0; height: 0; margin: -5px 0 0 -4px;
+  transform-origin: 4px 5px; }
+.lin-arrow::after { content: ""; position: absolute; left: 11px; top: 0; border-style: solid;
+  border-width: 5px 0 5px 8px; border-color: transparent transparent transparent var(--c); }
+.lin-badge.wide .lin-arrow::after { left: 16px; }
+.lin-tip { width: max-content; max-width: 360px; white-space: normal; }
+.lin-tt + .lin-tt { margin-top: 5px; padding-top: 5px; border-top: 1px solid var(--border); }
+.lin-n { display: inline-block; min-width: 16px; height: 16px; border-radius: 8px; color: #0b0f15; font-size: 10.5px; font-weight: 700;
+  text-align: center; line-height: 16px; padding: 0 3px; margin-right: 3px; }
 
 /* bulles Leaflet aux couleurs de l'appli */
 .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: var(--surface); color: var(--text); box-shadow: 0 10px 30px rgba(0,0,0,.4); }

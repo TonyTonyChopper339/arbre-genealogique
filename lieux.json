@@ -1878,5 +1878,10 @@
   "lat": 47.433,
   "lon": 19.117,
   "src": "claude"
+ },
+ "Majk, Komárom, Hongrie": {
+  "lat": 47.557,
+  "lon": 18.335,
+  "src": "claude"
  }
 }
